@@ -1,4 +1,20 @@
+---
+layout: page
+title: README
+permalink: /readme/
+---
+
 justnewbee.github.io
 ====================
 
-myghp = my github page
+# how
+
+1. install jekyll
+    * require ruby > 1.9.3
+    * require bundler - `gem install bundler`
+
+## run
+
+```
+bundle exec jekyll serve
+```
