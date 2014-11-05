@@ -67,6 +67,7 @@ categories: jekyll update
 * [vim学习资料的搜集](http://www.openvim.com/index.html)
 * [入门](http://tips.webdesign10.com/another-vim-tutorial)
 * [蛮全的一个学习列表](http://alvinalexander.com/linux/vi-vim-editor-tutorials-collection)
+* [vim视频教程](http://derekwyatt.org/vim/tutorials) 一个带口音的外国人搞的 但看视频需要翻墙
 
 # movement (未完)
 
