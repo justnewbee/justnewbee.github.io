@@ -18,3 +18,7 @@ justnewbee.github.io
 ```
 bundle exec jekyll serve
 ```
+
+## take a look
+
+<https://justnewbee.github.io>
