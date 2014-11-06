@@ -24,7 +24,7 @@ categories: jekyll update
 * [HippoEdit](http://www.hippoedit.com) - 号称是Windows上的Best，个人喜欢的#2，退出时可以自动缓存数据，不会干扰你退出；有丰富的插件；也是可以不花钱一直用，只是启动的时候会有个提醒
 * [Nodepadd++](http://notepad-plus-plus.org) - 免费且功能强大
 * [Editplus](http://www.editplus.com) - 一直觉得UI很丑；据说是php利器；35美大洋，估计大部分人用的是注册机
-* [EditPad Pro](http://www.editpadpro.com) - JGSoft出品，用过一段子时间，蛮有特色，还不错；49.95美大洋，有不要钱的Lite版
+* [EditPad Pro](http://www.editpadpro.com) - JGSoft出品，用过一段时间，蛮有特色，还不错；49.95美大洋，有免费的Lite版
 * [PSPad](http://www.pspad.com/) - 挺好的一个免费编辑器
 * [AkelPad](http://akelpad.sourceforge.net/en/index.php) - 因为用totalcmd而结识的编辑器，小巧快速，更新频度高；网站似乎被某匪墙了，天理不在
 
@@ -37,7 +37,7 @@ categories: jekyll update
 
 这里不是来比较各个浏览器哪个好哪个不好；我认为只要是编辑器，那就是好的，毕竟不是每个人都能写出编辑起来的。每个人按自己的喜好，选择几个适合自己的就行了。我选择编辑器的标准是：
 
-1. 最好不要钱，或者说不要逼人掏钱（不给钱就不给用的有些流氓）
+1. 最好免费，或者不要逼人掏钱（不给钱就不给用的有些流氓）
 2. 图标和界面要能第一时间抓住眼球
 3. 要有丰富的可配置项，以下是必须支持的
 	* 文件编码
