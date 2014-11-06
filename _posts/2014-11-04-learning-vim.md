@@ -47,7 +47,7 @@ categories: jekyll update
 	* 支持语法高亮，最好能自定义某些高亮规则
 	* 快捷键自定义
 4. 丰富的插件
-5. 最好具有以下功能（内置或通过插件提供）
+5. 具有以下功能（内置或通过插件提供）
 	* emmet编程方式
 	* 自动补全
 	* Markdown预览
@@ -72,10 +72,9 @@ categories: jekyll update
 
 ## 不错的资料
 
-* [vim学习资料的搜集](http://www.openvim.com/index.html)
-* [入门](http://tips.webdesign10.com/another-vim-tutorial)
-* [非常棒的交互式学习vim的教程](http://www.openvim.com/tutorial.html)
-* [蛮全的一个学习列表](http://alvinalexander.com/linux/vi-vim-editor-tutorials-collection)
-* [vim视频教程](http://derekwyatt.org/vim/tutorials) 一个带口音的外国人搞的 但看视频需要翻墙
-* [一个比较全的vim 思维导向图形式的cheatsheet](http://jrmiii.com/attachments/Vim.pdf)
-* [文字比较多的一个教程](http://blog.interlinked.org/tutorials/vim_tutorial.html)
+* <http://www.openvim.com/index.html> 里面的tutorial是非常棒的交互式学习教程
+* <http://tips.webdesign10.com/another-vim-tutorial> 入门教程
+* <http://alvinalexander.com/linux/vi-vim-editor-tutorials-collection> 蛮全的一个学习列表
+* <http://derekwyatt.org/vim/tutorials> 视频教程 一个带口音的外国人搞的 但看视频需要翻墙
+* <http://jrmiii.com/attachments/Vim.pdf> 一个比较全的vim思维导向图形式的cheatsheet
+* <http://blog.interlinked.org/tutorials/vim_tutorial.html> 文字比较多的一个教程
