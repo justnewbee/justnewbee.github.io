@@ -9,4 +9,6 @@ twitter_username: justnewbee
 github_username: justnewbee
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
+highlighter: pygments
+markdown: redcarpet
