@@ -37,3 +37,19 @@ $on-laptop: 800px;
 
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "base", "layout", "syntax-highlighting";
+
+p {
+	&.note,
+	&.warning {
+		padding: 0.8em 1em;
+		font-size: 0.8em;
+	}
+	&.note {
+		background-color: #D8EBF8;
+		color: #264C72;
+	}
+	&.warning {
+		background-color: #FCC;
+		color: #C33;
+	}
+}

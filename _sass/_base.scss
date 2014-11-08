@@ -15,7 +15,6 @@ body {
 	font-family: $base-font-family;
 	font-size: $base-font-size;
 	line-height: $base-line-height;
-	font-weight: 300;
 	color: $text-color;
 	background-color: $background-color;
 	-webkit-text-size-adjust: 100%;
@@ -77,11 +76,11 @@ h1, h2, h3, h4, h5, h6 {
 a {
 	color: $brand-color;
 	text-decoration: none;
-	
+
 	&:visited {
 		color: darken($brand-color, 15%);
 	}
-	
+
 	&:hover {
 		color: $text-color;
 		text-decoration: underline;
@@ -98,7 +97,7 @@ blockquote {
 	font-size: 18px;
 	letter-spacing: -1px;
 	font-style: italic;
-	
+
 	> :last-child {
 		margin-bottom: 0;
 	}
@@ -107,26 +106,21 @@ blockquote {
 /**
  * Code formatting
  */
-pre,
 code {
-	font-size: 15px;
-	border: 1px solid $grey-color-light;
 	border-radius: 3px;
-	background-color: #eef;
-}
-
-code {
-	padding: 1px 5px;
+	background-color: #FEC;
+	padding: 0 3px;
 }
 
 pre {
 	padding: 8px 12px;
 	overflow-x: scroll;
-	
-	> code {
-		border: 0;
-		padding-right: 0;
-		padding-left: 0;
+	font-size: 0.9em;
+
+	code {
+		border-radius: 0;
+		background-color: transparent;
+		padding: 0;
 	}
 }
 
@@ -141,7 +135,7 @@ pre {
 	padding-right: $spacing-unit;
 	padding-left: $spacing-unit;
 	@extend %clearfix;
-	
+
 	@include media-query($on-laptop) {
 		max-width: -webkit-calc(1000px - (#{$spacing-unit}));
 		max-width: calc(1000px - (#{$spacing-unit}));
@@ -170,7 +164,7 @@ pre {
 		width: 16px;
 		height: 16px;
 		vertical-align: middle;
-		
+
 		path {
 			fill: $grey-color;
 		}
