@@ -255,10 +255,8 @@ _{_{_ "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo consequatu
 </ul>
 ```
 
-# Conclusion
+# 总结
 
-We’ve gone over all of the built-in AngularJS filters. The built-in filters provide a variety of functionality from simple uppercasing of a string to complex manipulation of dates.
+到这里，我们已经看过了angular所有内建的`filter`，它们当中有简单到可以不存在的大小写转换，也有复杂而功能强大的日期操作。同时我们也了解了使用`filter`的几种不同的方式，最常用的是应用于HTML的表达式中，还有如何在JS中中间接使用`filter`。
 
-We went over the different ways to apply filters, the most common being by applying the filter directly in the binding, but I’ve also shown you how to apply the filter through JavaScript.
-
-I hope this article has gotten you familiar with how AngularJS filters work because next we are going to learn to build our own filters! Stay tuned!
+希望本文可以帮你了解`filter`的工作机制，因为接下来，我们将继续angular的`filter`之旅，自己写`filter`。Stay tuned吧！
