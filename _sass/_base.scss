@@ -116,6 +116,9 @@ pre {
 	padding: 8px 12px;
 	overflow-x: scroll;
 	font-size: 0.9em;
+	white-space: pre-wrap;
+	word-spacing: normal;
+	word-break: normal;
 
 	code {
 		border-radius: 0;
