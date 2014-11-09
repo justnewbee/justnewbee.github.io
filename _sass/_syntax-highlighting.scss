@@ -2,7 +2,7 @@
  * Syntax highlighting styles
  */
 .highlight {
-	background: #000;
+	background: #181818;
 	color: #FFF;
 	@extend %vertical-rhythm;
 
@@ -126,10 +126,10 @@
 		color: #555;
 	}
 	.nt {// Name.Tag
-		color: #000080;
+		color: #5BD;
 	}
 	.nv {// Name.Variable
-		color: #008080;
+		color: #5BD;
 	}
 	.ow {// Operator.Word
 		font-weight: bold;
