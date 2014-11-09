@@ -230,3 +230,35 @@ _{_{_ o | json _}_}_
   "hasActiveDevice": false
 }
 ```
+
+## 长度限制
+
+`limitTo`，又是一个顾名思义的`filter`，帮你把字符串或者数组的长度限定在一个范围之内。例如，对一个长度为15的字符串使用`limitTo:10`将只显示该字符串的前面10个字符。
+
+`limitTo`用于数组的时候，跟`ng-repeat`一起搭配会很强大，你可以很轻松地利用它们在你的应用上搭建一个分页系统。
+
+`limitTo`的一个常用场景是文本预览，比方说在blog的首页上，每篇blog你想只显示250个字作为预览，你只需要简单地`_{_{_ previewCopy | limitTo: 250 _}_}_`就可以了。
+
+<p class="note">
+下面的例子中用了大量的“lorem...”，这个是国外程序员很喜欢用的范例文本，很多编辑器都有snippet，起个头"lorem"，然后按一下`tab`，整段文本就出来了。如果编辑器本身没有这个，装个emmet插件。
+</p>
+
+```
+_{_{_ "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo consequatur quas perferendis consequuntur dolor? Molestias molestiae dolor illum nobis sit quis vitae beatae excepturi quisquam ullam sint, enim, laboriosam voluptatibus." | limitTo:12 _}_}_ ➔ Lorem ipsum dol
+```
+
+以上代码等价于`_{_{_ str.substring(0, 15) _}_}_`，体现不出`limitTo`的强大之处，最多的时候还是用在数组上：
+
+```html
+<ul data-ng-init="arr = [1,2,3,4,5,6,7,8,9,10]">
+    <li data-ng-repeat="_v in arr | limitTo:3">_{_{_ _v _}_}</li>
+</ul>
+```
+
+# Conclusion
+
+We’ve gone over all of the built-in AngularJS filters. The built-in filters provide a variety of functionality from simple uppercasing of a string to complex manipulation of dates.
+
+We went over the different ways to apply filters, the most common being by applying the filter directly in the binding, but I’ve also shown you how to apply the filter through JavaScript.
+
+I hope this article has gotten you familiar with how AngularJS filters work because next we are going to learn to build our own filters! Stay tuned!
