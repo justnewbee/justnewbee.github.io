@@ -21,6 +21,20 @@ categories: angular
 3. 在`<html>`（或`<body>`）标签上加`ng-app`（或`data-ng-app`，如果你跟我一样有“看到IDE警告就不舒服症”的话）属性
 4. 一个angular应用就好了...就这么简单，你把本文中的测试代码拷到`<body>`里面就能看到效果了（当然，要好看点的话，加些`<br />`或放些`<p>`吧）
 
+在看下去之前，我们来从源码里找找看angular内建了哪些`filter`：
+
+```js
+register("currency", currencyFilter);
+register("date", dateFilter);
+register("filter", filterFilter);
+register("json", jsonFilter);
+register("limitTo", limitToFilter);
+register("lowercase", lowercaseFilter);
+register("number", numberFilter);
+register("orderBy", orderByFilter);
+register("uppercase", uppercaseFilter);
+```
+
 <p class="warning">
 代码的渲染似乎有些问题... 还在调，所以暂时用_{_{_..._}_}_代替angular的表达式语法
 </p>
@@ -111,7 +125,6 @@ angular处理数字和货币的`number`和`currency`这两个filter还是非常�
 
 `number`提供了小数点精确到第几位（四舍五入）的功能，可以处理小数点显示几位的需求。
 
-
 ```
 不加任何参数，直接使用：
 _{_{_ 50 | number _}_}_ ➔ 50，等同于没用
@@ -136,13 +149,49 @@ _{_{_ 50.99 | currency:"￥" _}_}_ ➔ ￥50.99
 _{_{_ 50.999 | currency:"你要还我€：" _}_}_ ➔ 你要还我€：51.00
 
 操控小数点（要求angular 1.3+）：
-_{_{_ 59.99 | currency:'£':0 _}_}_ ➔ £60
+_{_{_ 59.99 | currency:"£":0 _}_}_ ➔ £60
 ```
 
 ## 日期和时间
 
-The Date and Time filters that come with Angular are amazing. The Date and Time filters will take any standard ISO 8601 date/time string and parse it into hundreds of different ways to meet your every need.
+如果你觉得前面的`filter`都太小儿科了，那么处理日期和时间的`date`就真的很“amazing”了。为什么说它“amazing”呢，首先，它接受的输入类型可以是`Date`对象、
+数字以及任何一种符合ISO 8601标准的日期/时间字符串；其次，它可以以各种输出形式满足你的需求。
 
-Whether you need the full date written as Thursday, October 19, 2014, or just the year, day, month or any combination you can think of such as day first, then the actual day name, followed by the last two digits of the year and concluded by the month in shorthand notation (i.e Nov for November), AngularJS will do it for you.
+不管你需要一个完整的格式如“Thursday, October 19, 2014”，还是只要年份、月份、日, 或者它们之间的各种形式的各种组合，什么短名字，长名字，只要年份的末两位等等，angular都能满足你。
+总之，`date`能让原本复杂的日期和时间操作变得很轻松，想要更多地了解`date`这个`filter`，去看看[angular有可能被某匪墙了的文档](https://docs.angularjs.org/api/ng/filter/date)。
 
-Parsing and manipulating date/time is often difficult and time consuming but the AngularJS filters make it a breeze. Like I said earlier, there are many different different filters you can apply here, and I could write multiple articles on all the different ways you can apply these filters, but in the interest of time I will direct you to the AngularJS docs that describe all the different parameters you can pass into the date filter and include a CodePen that shows off some of this functionality. Read more about the date filter here.
+<p class="note">
+
+</p>
+
+```
+输入字符串不符合标准：
+_{_{_ "2014-11-8" | date _}_}_ ➔ 2014-11-8
+
+默认显示：
+_{_{_ "2014-11-8" | date _}_}_Nov 8, 2014
+
+带个"fullDate"参数：
+_{_{_ "2014-11-08" | date:"fullDate" _}_}_ ➔ Saturday, November 8, 2014
+
+（下面用ISO时间作为输入，通过`new Date().toISOString()`获得）
+
+只要年、月、日、时、分、秒：
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'yyyy' _}_}_ ➔ 2014
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'yy' _}_}_ ➔ 14
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'MM' _}_}_ ➔ 11
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'M' _}_}_ ➔ 11
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'dd' _}_}_ ➔ 08
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'d' _}_}_ ➔ 8
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'HH' _}_}_ ➔ 23（不要奇怪，我们是+8区，15+8=23）
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'H' _}_}_ ➔ 23
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'hh' _}_}_ ➔ 11
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'h' _}_}_ ➔ 11
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'mm' _}_}_ ➔ 27
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'m' _}_}_ ➔ 27
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'ss' _}_}_ ➔ 09
+_{_{_ "2014-11-08T15:27:09.038Z" | date:'s' _}_}_ ➔ 9
+
+Custom Date Filter:
+_{_{_ dateUTC | date:"'Year:' yyyy, 'Month:' MMM, 'Day:' EEEE" _}_}_
+```
