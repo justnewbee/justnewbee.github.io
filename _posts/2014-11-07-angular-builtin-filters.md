@@ -236,6 +236,10 @@ _{_{_ "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo consequatu
 </ul>
 ```
 
+<p class="note">
+    <code>limitTo</code>还可以接负数，表示对字符串和数组倒着截取。但1.0.x的对字符串会忽略负数，不做截取。
+</p>
+
 # 总结
 
 到这里，我们已经看过了angular所有内建的filter，它们当中有简单到可以不存在的大小写转换，也有复杂而功能强大的日期操作。同时我们也了解了使用filter的几种不同的方式，最常用的是应用于HTML的表达式中，还有如何在JS中中间接使用filter。
@@ -281,11 +285,45 @@ _{_{_ orderBy_expression | orderBy : expression : reverse} _}_}_
 
 # filter filter
 
-`filter` filter（这样念挺好），应用于数组，如果你知道数组有个`filter`方法是干什么的，那么你就能知道它的工作时什么了，不过它们的接受的参数有些区别，而这些区别正式体现angular的独具匠心之处。
+`filter` filter（这样念挺好），应用于数组，如果你知道数组有个`filter`方法是干什么的，那么你就能知道它的工作是什么了，不过它们的接受的参数有些区别，而这些区别正式体现angular的独具匠心之处。
 
 这个filter真正牛逼之处，是在于它设计的非常巧妙。
 
+与数组的`filter`不同的是，数组的`filter`接受的参数是一个函数，而`filter` filter所接受的参数可以是字符串、对象和方法，当参数为方法时，效果跟数组的方法是一样的。
+参数为字符串或对象时，做的是模糊（fuzzy）匹配
 
 
+```
+<ul data-ng-init="arrHybrid = [71, 'very2', 'he110', {name: 'not_1'}, {a: {b: {c: { d: { e: 'deep 1ns1de'}}}}}, {foo1: 'bar'}, [1, 12, 123, 1234]]">
+  <li data-ng-repeat="_v in arrHybrid | filter:'1'">_{_{_ _v _}_}</li>
+</ul>
+```
+
+如果`expression`为字符串，`filter`会对数组里的每个元素作如下判断：
+1. 非对象/数组，则使用`toString`之后是否含有`expression`代表的字符串
+2. 对象/数组，则遍历值直到找到匹配或无功而返（注意这是个递归过程，所以不论匹配隐藏地多深，都能够被挖掘出来）
+
+以上输出如下：
+
+* 71
+* he110
+* {"name":"not_1"}
+* {"a":{"b":{"c":{"d":{"e":"deep 1ns1de"}}}}}
+* [1,12,123,1234]
+
+如果`expression`为对象，则除了value之外，对对象中的key也会作要求：
+
+还是上面的例子，改为`filter:{name:'1'}`，则输出结果：
+
+* {"name":"not_1"}
+
+`expression`中可以用特殊的`$`作为key，当为`filter:{$: 1}`时，与`filter:1`的效果没有差别。需要注意的是，字符串和数组也可以看成是以数字为key的对象，所以当使用`filter:{3: 1}`时，将得到如下输出：
+
+* he110
+* [1,12,123,1234]
+
+<p class="warning">
+`expression`中的匹配字串前面加`!`可以对结果取反，可以如果就是要匹配“!”呢？我没看到...
+</p>
 
 STILL WORKING...
