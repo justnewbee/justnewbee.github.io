@@ -8,7 +8,7 @@ categories: angular
 译序
 ===
 
-在<http://scotch.io>上看到一篇文章[《All About the Built-In AngularJS Filters》](http://scotch.io/tutorials/javascript/all-about-the-built-in-angularjs-filters)。虽然用了近一年的angular，可是因为比较仓促，自己写了很多`filter`，即使知道angular可能自带一些`filter`，也没得机会用。所以看到这篇文章，想想自己走过的弯路，觉得有必要翻译一下，毕竟最近参与了团队的翻译小组，拿这篇短文当个练手也不错。
+在<http://scotch.io>上看到一篇文章[《All About the Built-In AngularJS Filters》](http://scotch.io/tutorials/javascript/all-about-the-built-in-angularjs-filters)。虽然用了近一年的angular，可是因为比较仓促，自己写了很多filter，即使知道angular可能自带一些filter，也没得机会用。所以看到这篇文章，想想自己走过的弯路，觉得有必要翻译一下，毕竟最近参与了团队的翻译小组，拿这篇短文当个练手也不错。
 
 除了尽可能把原作者的意思表达清楚之外，我会在文章中**强势插入**一些自己的想法。
 
@@ -21,20 +21,6 @@ categories: angular
 3. 在`<html>`（或`<body>`）标签上加`ng-app`（或`data-ng-app`，如果你跟我一样有“看到IDE警告就不舒服症”的话）属性
 4. 一个angular应用就好了...就这么简单，你把本文中的测试代码拷到`<body>`里面就能看到效果了（当然，要好看点的话，加些`<br />`或放些`<p>`吧）
 
-在看下去之前，我们来从源码里找找看angular内建了哪些`filter`：
-
-```js
-register("currency", currencyFilter);
-register("date", dateFilter);
-register("filter", filterFilter);
-register("json", jsonFilter);
-register("limitTo", limitToFilter);
-register("lowercase", lowercaseFilter);
-register("number", numberFilter);
-register("orderBy", orderByFilter);
-register("uppercase", uppercaseFilter);
-```
-
 <p class="warning">
 代码的渲染似乎有些问题... 还在调，所以暂时用_{_{_..._}_}_代替angular的表达式语法
 </p>
@@ -46,16 +32,16 @@ register("uppercase", uppercaseFilter);
 介绍
 ===
 
-你可能不知道，那就是AngularJS其实内建了蛮多有用的`filter`。但程序员们还是不断地重复着造轮子的事情，实现那些一直都在那里向你招手而你视而不见的功能，
+你可能不知道，那就是AngularJS其实内建了蛮多有用的filter。但程序员们还是不断地重复着造轮子的事情，实现那些一直都在那里向你招手而你视而不见的功能，
 这有可能是因为这些不足以满足特定的需求，但更多的情况是他们不知道它们的存在。
 
-本文中将逐一介绍AngularJS本身提供的`filter`，它们大多在官方文档中有介绍，但可能缺少实际的案例，所以这里将采用大量的代码实例。
+本文中将逐一介绍AngularJS本身提供的filter，它们大多在官方文档中有介绍，但可能缺少实际的案例，所以这里将采用大量的代码实例。
 
 那么来吧！
 
 # 使用filter
 
-`filter`，即过滤器，顾名思义，用于**控制输出数据在视图中的显示**，在HTML中你通过`filter`控制绑定的数据的展现方式，有如下的方式：
+filter，即过滤器，顾名思义，用于**控制输出数据在视图中的显示**，在HTML中你通过filter控制绑定的数据的展现方式，有如下的方式：
 
 <p class="note">
 只要你对linux命令有些许了解，肯定会觉得angular的filter语法很熟悉，没错，angular的语法就是采用了管道符“|”。
@@ -68,7 +54,7 @@ _{_{_ totalCost | currency _}_}_
 ```
 ### filter链起来
 
-也可以将`filter`一个接一个用管道符`|`链起来，这样，前一个`filter`的输出将作为下一个`filter`的输入:
+也可以将filter一个接一个用管道符`|`链起来，这样，前一个filter的输出将作为下一个filter的输入:
 
 <p class="note">
 跟linux命令一样，管道符也可以怎么干。
@@ -80,7 +66,7 @@ _{_{_ totalCost | currency | filter2 | filter3 _}_}_
 
 ### 使用参数增强filter
 
-`filter`的第一个参数是输入数据，后面的参数是可选的参数，可以使用可选参数增强filter的使用场景（如显示货币的filter支持的币种参数，可以让它不局限于只显示美元，我们也不需要为每个不同的币种创建一个个新的filter）：
+filter的第一个参数是输入数据，后面的参数是可选的参数，可以使用可选参数增强filter的使用场景（如显示货币的filter支持的币种参数，可以让它不局限于只显示美元，我们也不需要为每个不同的币种创建一个个新的filter）：
 
 ```
 _{_{_ totalCost | currency:"USD$" _}_}_
@@ -88,7 +74,7 @@ _{_{_ totalCost | currency:"USD$" _}_}_
 
 ### JavaScript中使用filter
 
-一般来说，filter都是像前面一样在HTML视图里面用于angular表达式，你也可以在JS代码（在你的`controller`、`directive`及service）里面调用`filter`来得到输出结果。语法如下：
+一般来说，filter都是像前面一样在HTML视图里面用于angular表达式，你也可以在JS代码（在你的controller、directive及service）里面调用filter来得到输出结果。语法如下：
 
 ```
 $filter("number")(15, 5);
@@ -97,16 +83,16 @@ $filter("number")(15, 5);
 以上代码的效果等同于`{{ 15 | number:5 }}`，得到的结果是`15.00000`。
 
 <p class="note">
-虽然这样复用了filter的代码，但两对括号连在一起的形式让人多少有点不舒服。所以，如果是你自己写的filter，我建议可以这样，把你filter的主逻辑放到你的一个util service中，filter只是service对view的一个桥接。在JS中调用service，在HTML中调用filter。
+虽然这样复用了filter的代码，但两对括号连在一起的形式让人多少有点不舒服。所以，如果是你自己写的filter，我建议可以这样，把你filter的主逻辑放到你的一个service中，filter只是service的一个桥接。在JS中调用service，在HTML中调用filter。
 </p>
 
 # angular的内建filter介绍
 
-你如果对这些有点含糊，没什么头绪，不要紧，这里只是过一下`filter`的语法；接下去我们来真正过一遍angular自带的filter，以及如何使用它们提升应用的展示效果吧。
+你如果对这些有点含糊，没什么头绪，不要紧，这里只是过一下filter的语法；接下去我们来真正过一遍angular自带的filter，以及如何使用它们提升应用的展示效果吧。
 
 ## 字符串大小写
 
-`uppercase`和`lowercase`做的事情，已经无需再解释了。
+filter `uppercase`和`lowercase`做的事情，已经无需再解释了。
 
 ```
 {{"LOWERCASE" | lowercase}} ➔ lowercase
@@ -115,13 +101,12 @@ $filter("number")(15, 5);
 ```
 
 <p class="note">
-之所以不把原文那么多内容译出来，是因为我对这两个filter持保留意见：1). 不是所有的语言（比如我们的汉字）都有大小写转换的需求 2). 这既然是显示的事情，
-那就让CSS来干吧，`text-transform: uppercase|lowercase`完全可以胜任这两个filter的工作，而且不会被angular重复执行。
+对这两个filter，我不是很赞同：1). 不是所有的语言（比如我们的汉字）都有大小写转换的需求 2). 这既然是显示的事情，那就让CSS来干吧，`text-transform: uppercase|lowercase`完全可以胜任这两个filter的工作，而且不会被angular重复执行。
 </p>
 
 ## 数字与货币
 
-angular处理数字和货币的`number`和`currency`这两个filter还是非常有用的。
+filter `number`和`currency`分别处理数字和货币事宜，还是非常有用的。
 
 `number`提供了小数点精确到第几位（四舍五入）的功能，可以处理小数点显示几位的需求。
 
@@ -136,7 +121,7 @@ _{_{_ 50 | number:4 _}_}_ ➔ 50.0000
 _{_{_ 50.458 | number:2 _}_}_ ➔ 50.46
 ```
 
-`currency`处理货币的显示，多少显示出angular的闪光点，它的作用是在数字前面加上美元符“$”，同时强制精确到小数点后两位，毕竟是钱，要算清楚。当然，你会说那没啥用，我们用RMB，要“￥”。这没问题，那只是angular默认的行为，记得之前我们说的`filter`可以通过参数扩展自己的功能么？`currency`接受货币符号的参数（实际上，那可以是任何内容）。angular 1.3+之后（1.3.0 beta不行），可以接受第二个参数，可以操控小数点。
+`currency`处理货币的显示，多少显示出angular的闪光点，它的作用是在数字前面加上美元符“$”，同时**强制精确**到小数点后两位，毕竟是钱，要算清楚。当然，你会说那没啥用，我们用RMB，要“￥”。这没问题，那只是angular默认的行为，记得之前我们说的filter可以通过参数扩展自己的功能么？`currency`接受货币符号的参数（实际上，那可以是任何内容）。angular 1.3+之后（1.3.0 beta不行），可以接受第二个参数，可以操控小数点。
 
 ```
 不加任何参数，直接使用：
@@ -145,7 +130,7 @@ _{_{_ 50 | currency _}_}_ ➔ $50.00
 我要RMB：
 _{_{_ 50.99 | currency:"￥" _}_}_ ➔ ￥50.99
 
-“搞怪”货币（不要在项目里这么干啊，不然i18n就不好处理了）：
+无节操货币（不要在项目里这么干啊，不然i18n就不好处理了）：
 _{_{_ 50.999 | currency:"你要还我€：" _}_}_ ➔ 你要还我€：51.00
 
 操控小数点（要求angular 1.3+）：
@@ -154,22 +139,18 @@ _{_{_ 59.99 | currency:"£":0 _}_}_ ➔ £60
 
 ## 日期和时间
 
-如果你觉得前面的`filter`都太小儿科了，那么处理日期和时间的`date`就真的很“amazing”了。为什么说它“amazing”呢，首先，它接受的输入类型可以是`Date`对象、
+如果你觉得前面的filter都太小儿科了，那么处理日期和时间的`date`就真的很“amazing”了。为什么说它“amazing”呢，首先，它接受的输入类型可以是`Date`对象、
 数字以及任何一种符合ISO 8601标准的日期/时间字符串；其次，它可以以各种输出形式满足你的需求。
 
 不管你需要一个完整的格式如“Thursday, October 19, 2014”，还是只要年份、月份、日, 或者它们之间的各种形式的各种组合，什么短名字，长名字，只要年份的末两位等等，angular都能满足你。
-总之，`date`能让原本复杂的日期和时间操作变得很轻松，想要更多地了解`date`这个`filter`，去看看[angular有可能被某匪墙了的文档](https://docs.angularjs.org/api/ng/filter/date)。
-
-<p class="note">
-
-</p>
+总之，`date`能让原本复杂的日期和时间操作变得很轻松，想要更多地了解`date`这个filter及其支持的各种格式，去看看[angular有可能被某匪墙了的文档](https://docs.angularjs.org/api/ng/filter/date)。
 
 ```
 输入字符串不符合标准：
 _{_{_ "2014-11-8" | date _}_}_ ➔ 2014-11-8
 
 默认显示：
-_{_{_ "2014-11-8" | date _}_}_Nov 8, 2014
+_{_{_ "2014-11-8" | date _}_}_ ➔ Nov 8, 2014
 
 带个"fullDate"参数：
 _{_{_ "2014-11-08" | date:"fullDate" _}_}_ ➔ Saturday, November 8, 2014
@@ -206,8 +187,8 @@ _{_{_ 1415460429038 | date:"yy年M月d日" _}_}_ ➔ 14年11月8日
 
 ## JSON
 
-在angular里，如果表达式里面是个对象，它会以JSON的方式输出，这一般用于debug。但如果是个比较复杂的对象，输出来的对像基本上是无法看清的，所以就有了`json`这个`filter`。
-它做的事情很简单，只是把对象以好看的形式输出来，也不接受参数。唯一要做的是，你需要输出到`<pre>`里面，不然HTML忽略换行与空格，还是一样看不清。
+在angular里，如果表达式里面是个对象，它会以JSON的方式输出，这一般用于debug。但如果是个比较复杂的对象，输出来的对像基本上是无法看清的，所以就有了`json`这个filter。
+它做的事情很简单，只是把对象以好看的形式输出来，也不接受参数。唯一要做的是，你需要输出到`<pre>`里面，不然HTML忽略换行与空格，还是一样看不清。可以说，没有`<pre>`，`json`的作用无法体现。
 
 ```html
 <pre data-ng-init="o = {name: 'Bob', email: 'bob@inbox', password: 'youshallnotpass',
@@ -233,7 +214,7 @@ _{_{_ o | json _}_}_
 
 ## 长度限制
 
-`limitTo`，又是一个顾名思义的`filter`，帮你把字符串或者数组的长度限定在一个范围之内。例如，对一个长度为15的字符串使用`limitTo:10`将只显示该字符串的前面10个字符。
+`limitTo`，又是一个顾名思义的filter，帮你把字符串或者数组的长度限定在一个范围之内。例如，对一个长度为15的字符串使用`limitTo:10`将只显示该字符串的前面10个字符。
 
 `limitTo`用于数组的时候，跟`ng-repeat`一起搭配会很强大，你可以很轻松地利用它们在你的应用上搭建一个分页系统。
 
@@ -257,6 +238,54 @@ _{_{_ "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo consequatu
 
 # 总结
 
-到这里，我们已经看过了angular所有内建的`filter`，它们当中有简单到可以不存在的大小写转换，也有复杂而功能强大的日期操作。同时我们也了解了使用`filter`的几种不同的方式，最常用的是应用于HTML的表达式中，还有如何在JS中中间接使用`filter`。
+到这里，我们已经看过了angular所有内建的filter，它们当中有简单到可以不存在的大小写转换，也有复杂而功能强大的日期操作。同时我们也了解了使用filter的几种不同的方式，最常用的是应用于HTML的表达式中，还有如何在JS中中间接使用filter。
 
-希望本文可以帮你了解`filter`的工作机制，因为接下来，我们将继续angular的`filter`之旅，自己写`filter`。Stay tuned吧！
+希望本文可以帮你了解filter的工作机制，因为接下来，我们将继续angular的filter之旅，自己写filter。Stay tuned吧！
+
+<hr />
+
+以上是译文。
+
+译后
+===
+
+作者写的不错，不过也有疏漏。在原文的评论中也有些不错的意见，所以，接下去我们再做些简单地研究。
+
+在看下去之前，我们来从源码里找找看angular内建了哪些filter：
+
+```js
+register("currency", currencyFilter);
+register("date", dateFilter);
+register("filter", filterFilter);
+register("json", jsonFilter);
+register("limitTo", limitToFilter);
+register("lowercase", lowercaseFilter);
+register("number", numberFilter);
+register("orderBy", orderByFilter);
+register("uppercase", uppercaseFilter);
+```
+
+所以，还有`filter`和`orderBy`这两个filter没给介绍到，所以这里补个漏。不过在继续之前，我们再统一回顾一下语法：
+
+```
+_{_{_ currency_expression | currency : symbol : fractionSize _}_}_
+_{_{_ date_expression | date : format : timezone _}_}_
+_{_{_ filter_expression | filter : expression : comparator _}_}_
+_{_{_ json_expression | json _}_}_
+_{_{_ limitTo_expression | limitTo : limit _}_}_
+_{_{_ lowercase_expression | lowercase _}_}_
+_{_{_ uppercase_expression | uppercase _}_}_
+_{_{_ number_expression | number : fractionSize _}_}_
+_{_{_ orderBy_expression | orderBy : expression : reverse} _}_}_
+```
+
+# filter filter
+
+`filter` filter（这样念挺好），应用于数组，如果你知道数组有个`filter`方法是干什么的，那么你就能知道它的工作时什么了，不过它们的接受的参数有些区别，而这些区别正式体现angular的独具匠心之处。
+
+这个filter真正牛逼之处，是在于它设计的非常巧妙。
+
+
+
+
+END
