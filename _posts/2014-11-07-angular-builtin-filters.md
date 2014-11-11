@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "angular的内建filter"
+title:  "angular的内建filter[译]"
 date:   2014-11-07 22:12:51
 categories: angular
 ---
@@ -285,45 +285,64 @@ _{_{_ orderBy_expression | orderBy : expression : reverse} _}_}_
 
 # filter filter
 
-`filter` filter（这样念挺好），应用于数组，如果你知道数组有个`filter`方法是干什么的，那么你就能知道它的工作是什么了，不过它们的接受的参数有些区别，而这些区别正式体现angular的独具匠心之处。
-
-这个filter真正牛逼之处，是在于它设计的非常巧妙。
-
-与数组的`filter`不同的是，数组的`filter`接受的参数是一个函数，而`filter` filter所接受的参数可以是字符串、对象和方法，当参数为方法时，效果跟数组的方法是一样的。
-参数为字符串或对象时，做的是模糊（fuzzy）匹配
-
+`filter` filter应用于数组，如果你知道数组`Array`本身有个`filter`方法，你就知道它的工作是什么。这是`filter`的用法：
 
 ```
+_{_{_ array | filter : expression : comparator _}_}_
+```
+
+与数组的`filter`不同，`filter` filter可以接受两个参数：`expression`和`comparator`，后者是可选的，我们先看前者，它有三种选择：
+
+* 字符串`"value"`
+* 对象`{key: "value"}`
+* 函数`function(v, k) { ... }`
+
+**字符串**  
+对数组里的每个元素的值（本身的值或内部元素的值）`toString`后进行模糊匹配：
+
+<p class="note">
+对象/数组，这种匹配是递归的，所以不论匹配隐藏地多深，都能够被挖掘出来，你也可以认为，此操作会把对象扁平化进行匹配，即`{a: {b: {c: { d: { e: 'deep 1ns1de'}}}}}`扁平成`{'a.b.c.d.e': 'deep 1ns1de'}`，用过mongo的人对此应该很熟悉。
+</p>
+
+```html
 <ul data-ng-init="arrHybrid = [71, 'very2', 'he110', {name: 'not_1'}, {a: {b: {c: { d: { e: 'deep 1ns1de'}}}}}, {foo1: 'bar'}, [1, 12, 123, 1234]]">
   <li data-ng-repeat="_v in arrHybrid | filter:'1'">_{_{_ _v _}_}</li>
 </ul>
 ```
 
-如果`expression`为字符串，`filter`会对数组里的每个元素作如下判断：
-1. 非对象/数组，则使用`toString`之后是否含有`expression`代表的字符串
-2. 对象/数组，则遍历值直到找到匹配或无功而返（注意这是个递归过程，所以不论匹配隐藏地多深，都能够被挖掘出来）
+输出如下：
 
-以上输出如下：
+```
+71
+he110
+{"name":"not_1"}
+{"a":{"b":{"c":{"d":{"e":"deep 1ns1de"}}}}}
+[1,12,123,1234]
+```
 
-* 71
-* he110
-* {"name":"not_1"}
-* {"a":{"b":{"c":{"d":{"e":"deep 1ns1de"}}}}}
-* [1,12,123,1234]
+**对象**  
+匹配所有的key-value对。还是上面的例子，改为`filter:{name:'1'}`，则输出结果：
 
-如果`expression`为对象，则除了value之外，对对象中的key也会作要求：
+```
+{"name":"not_1"}
+```
 
-还是上面的例子，改为`filter:{name:'1'}`，则输出结果：
+但如果是`{a: '1', name: '1'}`，将没有任何输出。
 
-* {"name":"not_1"}
+还可以用特殊的`$`作为key，`filter:{$: 1}`等效于`filter:1`。
 
-`expression`中可以用特殊的`$`作为key，当为`filter:{$: 1}`时，与`filter:1`的效果没有差别。需要注意的是，字符串和数组也可以看成是以数字为key的对象，所以当使用`filter:{3: 1}`时，将得到如下输出：
+需要注意的是，字符串和数组也可以看成是以数字为key的对象，`filter:{3: 1}`将得到如下输出：
 
-* he110
-* [1,12,123,1234]
+```
+he110
+[1,12,123,1234]
+```
 
 <p class="warning">
 `expression`中的匹配字串前面加`!`可以对结果取反，可以如果就是要匹配“!”呢？我没看到...
 </p>
+
+**方法**  
+跟`Array`的方式一样。
 
 STILL WORKING...
