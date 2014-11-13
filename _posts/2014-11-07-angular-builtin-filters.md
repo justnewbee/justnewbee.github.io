@@ -285,7 +285,7 @@ _{_{_ orderBy_expression | orderBy : expression : reverse} _}_}_
 
 # filter filter
 
-`filter` filter应用于数组，如果你知道数组`Array`本身有个`filter`方法，你就知道它的工作是什么。这是`filter`的用法：
+`filter` filter应用于数组，如果你知道数组`Array`本身有个`filter`方法，你就知道它的工作是什么。`filter`功能强大，参数多变，所以需要多花写篇幅好好捋一捋。这是`filter`的用法：
 
 ```
 _{_{_ array | filter : expression : comparator _}_}_
@@ -297,7 +297,7 @@ _{_{_ array | filter : expression : comparator _}_}_
 * 对象`{key: "value"}`
 * 函数`function(v, k) { ... }`
 
-**字符串**  
+**expression为字符串**  
 对数组里的每个元素的值（本身的值或内部元素的值）`toString`后进行模糊匹配：
 
 <p class="note">
@@ -320,14 +320,14 @@ he110
 [1,12,123,1234]
 ```
 
-**对象**  
-匹配所有的key-value对。还是上面的例子，改为`filter:{name:'1'}`，则输出结果：
+**expression为对象**  
+匹配所有的expression中的所有key-value对，每个匹配的方式跟之前的一样。还是上面的例子，改为`filter:{a:'1'}`或`filter:{'a.b':'1'}`，则输出结果：
 
 ```
 {"name":"not_1"}
 ```
 
-但如果是`{a: '1', name: '1'}`，将没有任何输出。
+但如果是`{'a.c': 1}`（找不到key）或`{a: '1', name: '1'}`（没有两个都符合的），将没有任何输出。
 
 还可以用特殊的`$`作为key，`filter:{$: 1}`等效于`filter:1`。
 
@@ -342,7 +342,52 @@ he110
 `expression`中的匹配字串前面加`!`可以对结果取反，可以如果就是要匹配“!”呢？我没看到...
 </p>
 
-**方法**  
-跟`Array`的方式一样。
+**expression为方法**  
+跟`Array`的方式一样，它可以让我们做更多地事情，更精确的匹配，你可以想象成上面的两种方式是这种的特例，angular在内部为你实现了filter的方法。
+
+假设我们需要把所有类型为`String`的元素filter出来，需要在JsBin里加一点JS（因为用了JS，所以把原本`ng-init`对`arrHybrid`的初始化也拿过来了）：
+
+```js
+function FilterTestCtrl($scope) {
+    angular.extend($scope, {
+        arrHybrid: [71, "very2", "he110", {
+            name: "not_1"
+        }, {
+            a: {
+                b: {
+                    c: {
+                        d: {
+                            e: "deep 1ns1de"
+                        }
+                    }
+                }
+            }
+        }, {
+            foo1: "bar"
+        }, [1, 12, 123, 1234]],
+
+        filterFn: function(v, k) {
+            return angular.isString(v);
+        }
+    });
+}
+```
+
+修改HTML，加上`ng-controller`：
+
+```html
+<ul ng-controller="FilterTestCtrl">
+    <li data-ng-repeat="_v in arrHybrid | filter:filterFn">{{ _v }}</li>
+</ul>
+```
+
+输出如下：
+
+```
+very2
+he110
+```
+
+
 
 STILL WORKING...
