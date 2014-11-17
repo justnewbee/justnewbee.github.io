@@ -22,3 +22,5 @@ bundle exec jekyll serve
 ## take a look
 
 <https://justnewbee.github.io>
+
+test ssh commit and push
