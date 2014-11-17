@@ -291,6 +291,8 @@ _{_{_ orderBy_expression | orderBy : expression : reverse} _}_}_
 _{_{_ array | filter : expression : comparator _}_}_
 ```
 
+## expression
+
 与数组的`filter`不同，`filter` filter可以接受两个参数：`expression`和`comparator`，后者是可选的，我们先看前者，它有三种选择：
 
 * 字符串`"value"`
@@ -388,6 +390,18 @@ very2
 he110
 ```
 
+## comparator
+
+`comparator`可以对每个匹配的
+Comparator which is used in determining if the expected value (from the filter expression) and actual value (from the object in the array) should be considered a match.
+
+Can be one of:
+
+function(actual, expected): The function will be given the object value and the predicate value to compare and should return true if the item should be included in filtered result.
+
+true: A shorthand for function(actual, expected) { return angular.equals(expected, actual)}. this is essentially strict comparison of expected and actual.
+
+false|undefined: A short hand for a function which will look for a substring match in case insensitive way.
 
 
 STILL WORKING...
