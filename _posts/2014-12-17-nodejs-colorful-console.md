@@ -63,6 +63,6 @@ console.log("the \x1b[42m\x1b[34m\x1b[46mGreat Fire Wall\x1b[0m is most ugly and
 \x1b[8m = 看不见 但位置还留着
 ```
 
-总结：所有的文本命令都是以`\x1b[`打头，`m`结尾，中间是为`3#`的是前景色，`4#`表示背景色，前景/背景色的第二个数对应的颜色一样；如果只有一个数字`#`表示其他的设置。
+总结：所有的文本命令都是以`\x1b[`打头，`m`结尾，中间1到2位数字：为`3#`的是前景色，`4#`表示背景色，前景/背景色的第二个数对应的颜色一样；一位数字表示其他的设置。
 
-...其实我也只是在<https://coderwall.com/p/yphywg/printing-colorful-text-in-terminal-when-run-node-js-script>get了的这个技能。
+...其实我也只是在[这里](https://coderwall.com/p/yphywg/printing-colorful-text-in-terminal-when-run-node-js-script)get了的这个技能。
