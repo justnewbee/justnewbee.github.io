@@ -2,7 +2,7 @@
 layout: post
 title:  "学习vim #1 - 逛来逛去"
 date:   2014-11-04 22:12:51
-categories: jekyll update
+categories: vim
 ---
 
 这个cheatsheet，很好地解释了vim中常用的移动方式：

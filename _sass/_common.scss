@@ -1,0 +1,13 @@
+.adaptive-img {
+	max-width: 95%;
+	height: auto;
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	
+	img {
+		max-width: 100% !important;
+		height: auto;
+		display: block;
+	}
+}

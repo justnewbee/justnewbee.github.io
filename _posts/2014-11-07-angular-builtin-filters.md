@@ -2,7 +2,7 @@
 layout: post
 title:  "angular的内建filter[译]"
 date:   2014-11-07 22:12:51
-categories: angular
+categories: translate angular
 ---
 
 译序

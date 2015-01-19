@@ -2,7 +2,7 @@
 layout: post
 title:  "学习vim #0 - 引子"
 date:   2014-11-04 22:12:51
-categories: jekyll update
+categories: vim
 ---
 
 一直停留在[vim](http://www.vim.org)的浅层（只要是在vim里面用上下左右箭头，而不是`kjhl`的，都得低头承认啊），最近想好好再搞一下，毕竟人家是“编辑器之神”啊。
