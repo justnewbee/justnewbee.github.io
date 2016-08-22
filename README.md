@@ -19,6 +19,13 @@ justnewbee.github.io
 bundle exec jekyll serve
 ```
 
+## upgrade
+
+```
+	gem update bundler
+gem update jekyll
+```
+
 ## take a look
 
 <https://justnewbee.github.io>

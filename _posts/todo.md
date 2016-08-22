@@ -1,0 +1,1 @@
+http://lostechies.com/gabrielschenker/2014/01/14/angularjspart-9-values-and-constants/

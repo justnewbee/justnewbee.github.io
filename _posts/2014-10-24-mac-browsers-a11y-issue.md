@@ -89,7 +89,7 @@ Opera可以通过为`a`手动添加`tabIndex`来解决；但Firefox不行...继�
 方法二：调教系统  
 如果不改Firefox的`about:config`，还有一个办法就是System Preferences > Keyboard > Shortcuts，最下面选择“All controls”：
 
-![Mac系统设定](/images/mac_setting_keyboard.png)
+![Mac系统设定](/images/posts/mac_setting_keyboard.png)
 
 系统的，即是大家的，那么它对Safari和Opera是否同样有效呢？答案是：有点效果，只是有点...Safari上原本无法TAB到的`button`、`radio`和`checkbox`等都可以了，但`a`还是不行，即使加`tabIndex`也不行，还是必须`Option` + `TAB`；Opera仍旧只能靠`tabIndex`。看来，这个系统设定是为Firefox量身定制的，真是“百撕不得骑姐”。
 
