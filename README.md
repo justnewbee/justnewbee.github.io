@@ -22,7 +22,7 @@ bundle exec jekyll serve
 ## upgrade
 
 ```
-	gem update bundler
+gem update bundler
 gem update jekyll
 ```
 

@@ -23,7 +23,7 @@ categories: html
 
 ## MDN 上的定义
 
-就近查阅 MDN 正好有 [关于replaced element的文章](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)，文章很短：
+就近查阅 MDN 正好有 [关于 replaced element 的文章](https://developer.mozilla.org/en-US/docs/Web/CSS/Replaced_element)，文章很短：
 
 > In CSS, a replaced element is an element whose representation is outside the scope of CSS. These are kind of external objects whose representation is independent of the CSS. Typical replaced elements are `<img>`, `<object>`, `<video>` or form elements like `<textarea>` and `<input>`. Some elements, like `<audio>` or `<canvas>` are replaced elements only in specific cases. Objects inserted using the CSS content properties are anonymous replaced elements.
 >
@@ -33,7 +33,7 @@ categories: html
 
 ## W3C 的定义
 
-[W3C的文章](http://www.w3.org/TR/CSS2/conform.html#replaced-element) 中关于 replaced element 的这一段有些晦涩难懂...
+[W3C 的文章](http://www.w3.org/TR/CSS2/conform.html#replaced-element) 中关于 replaced element 的这一段有些晦涩难懂...
 
 > An element whose content is outside the scope of the CSS formatting model, such as an image, embedded document, or applet. For example, the content of the HTML IMG element is often replaced by the image that its "src" attribute designates. Replaced elements often have intrinsic dimensions: an intrinsic width, an intrinsic height, and an intrinsic ratio. For example, a bitmap image has an intrinsic width and an intrinsic height specified in absolute units (from which the intrinsic ratio can obviously be determined). On the other hand, other documents may not have any intrinsic dimensions (for example, a blank HTML document).
 
@@ -43,13 +43,13 @@ categories: html
 
 ## 反过来看看 non-replaced element
 
-StackOverflow上 [关于non-replaced element的讨论](http://stackoverflow.com/questions/12468176/what-is-a-non-replaced-inline-element)，有更好的参考价值。「it is best to read "replaced" as "embedding"」这句话，很好地阐述了什么是 replaced element：它的内容是嵌入进来的。
+StackOverflow上 [关于 non-replaced element 的讨论](http://stackoverflow.com/questions/12468176/what-is-a-non-replaced-inline-element)，有更好的参考价值。「it is best to read "replaced" as "embedding"」这句话，很好地阐述了什么是 replaced element：它的内容是嵌入进来的。
 
 # 总结
 
 关于 `replaced element`，概括来说有以下几点：
 
-1. 多为嵌入外部的对象，典型的有：`<img>`、`<object>`（那就肯定有 `<embed>`）、`<audio>`、`<video>`、`<canvas>`，像 `<textarea>`、`<input>`、`<select>` 这样的form元素（跟历史有关，早期的浏览器使用的系统的东西来实现它们，导致无法被 CSS 监管到）；
+1. 多为嵌入外部的对象，典型的有：`<img>`、`<object>`（那就肯定有 `<embed>`）、`<audio>`、`<video>`、`<canvas>`，像 `<textarea>`、`<input>`、`<select>` 这样的表单元素（跟历史有关，早期的浏览器使用的系统的东西来实现它们，导致无法被 CSS 监管到）；
 2. 很多属性不受 CSS 控制；
 3. 使用 CSS 的 `content` 属性插入的对象是一个 replaced element（`:before`、`:after`）；
 4. CSS 对 replaced element 的一些计算会特殊处理，如 `margin` 和一些 `auto` 值；

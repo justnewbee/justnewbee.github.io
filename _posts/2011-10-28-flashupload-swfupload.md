@@ -1,6 +1,6 @@
 ---
 layout: post
-title: FlashUpload对于SWFUpload的改进
+title: FlashUpload 对于 SWFUpload 的改进
 date: 2011-10-28 08:10:01
 tags: actionscript, swfupload
 ---
@@ -29,7 +29,7 @@ tags: actionscript, swfupload
 
 * flash 文件大小 19K -> 14K
 * AS 文件个数 3 -> 2
-* AS 代码总行数 121 + 112 + 1538 = 1771 --> 113 + 982 = 1095 少了676行，且后者包括新添加的那许多行注释
+* AS 代码总行数 121 + 112 + 1538 = 1771 --> 113 + 982 = 1095 少了 676 行，且后者包括新添加的那许多行注释
 * JS 代码行数 994 --> 791 少了 203 行，同样，后者包括新添加的那许多行注释
 
 当然，这还不是最终结果，可是已经能够能看到一些区别了。

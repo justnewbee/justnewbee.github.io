@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 学习vim #1 - 逛来逛去
+title: 学习 vim - 逛来逛去
 date: 2014-11-04 22:12:51
 categories: vim
 ---

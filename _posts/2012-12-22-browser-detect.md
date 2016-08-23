@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 浏览器侦测browser detect
+title: 浏览器侦测 browser detect
 date: 2012-12-22 09:12:51
 tags: javascript, jquery
 ---
