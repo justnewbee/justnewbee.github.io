@@ -2,7 +2,8 @@
 layout: post
 title: 我恨注册表之 - 文件不能共享
 date: 2010-12-15 02:12:18
-tags:  registry
+categories: os
+tags: registry
 ---
 
 领导派了个研究某个软件的任务。倒腾，装了卸，卸了装...突然发现机子有些地方就有问题了，最显著的一点就是 [DUMeter](http://www.hageltech.com/dumeter/about) 不能运行了。但是为了完成任务，不得不继续。最后在机子上共享一个目录，悲剧地发现文件属性没有「共享」这个标签页了居然！

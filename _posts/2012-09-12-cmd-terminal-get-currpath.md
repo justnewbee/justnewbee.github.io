@@ -2,6 +2,7 @@
 layout: post
 title: 命令行获得当前的路径
 date: 2012-09-12 05:09:26
+categories: terminal
 tags: tech
 ---
 

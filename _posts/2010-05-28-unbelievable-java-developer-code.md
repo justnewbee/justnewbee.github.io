@@ -2,8 +2,8 @@
 layout: post
 title: 一个令人无语的 Java 类 一种令人发指的编程方式
 date: 2010-05-28 08:05:41
-categories: stushit
-tags: code
+categories: code
+tags: shit
 ---
 
 从 2009 年 9 月份开始，在 Artemis 一直被编排在前端做开发。目前为止，对项目的前端代码，已经有了 60% 的满意度，但后端的 Java... 恕我直言，只能用「恶心」二字来形容了。

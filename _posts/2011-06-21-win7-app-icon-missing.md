@@ -2,7 +2,8 @@
 layout: post
 title: Win7 软件图标丢失
 date: 2011-06-21 11:06:59
-tags:  windows
+categories: os
+tags: windows
 ---
 
 我已经碰到过好多次了，今天又碰到了一次，就是 Win7 下某些软件的图标会突然间变成一个「破」图标。但其实该软件还健在，且你从图标属性里面看去，也是正常的。

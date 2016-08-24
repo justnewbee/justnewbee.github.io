@@ -2,7 +2,8 @@
 layout: post
 title: subclipse vs subversive
 date: 2012-10-12 06:10:02
-tags:  develop, eclipse, software
+categories: software
+tags: svn, eclipse
 ---
 
 公司最近把项目迁移到 svn 上，老要慢一步（而且慢好久...）。svn 都出来好久了，估计再过几年又会想到用改 git。eclipse 都宣布即将用 git 替代默认的 cvs 了。算了，不提...

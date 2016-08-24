@@ -2,7 +2,8 @@
 layout: post
 title: File Input Accessibility 研究
 date: 2011-06-24 05:06:10
-tags: develop, javascript
+categories: frontend
+tags: js, browser
 ---
 
 最近一直被用户可访问性的 bug 缠着，QA 要求当光标 tab 到我的上传控件上的时候，按「Enter」键能让文件浏览框弹（且叫它 file dialog 吧）出来。

@@ -2,8 +2,8 @@
 layout: post
 title: XMLHttpRequest Upload及CORS研究 (2)
 date: 2011-08-02 16:08:19
-categories: 倒腾
-tags: ajaxupload, javascript
+categories: frontend
+tags: js, upload
 ---
 
 前一篇写得过长了... 实在对不住懒人这个称号。

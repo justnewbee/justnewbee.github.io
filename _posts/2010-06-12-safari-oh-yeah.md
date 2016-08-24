@@ -2,6 +2,7 @@
 layout: post
 title: Safari 调试工具 Oh YeaH
 date: 2010-06-12 03:06:58
+categories: software
 tags: software
 ---
 

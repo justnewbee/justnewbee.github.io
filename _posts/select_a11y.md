@@ -10,7 +10,7 @@
 
 键盘符号：TAB`↹`、SPACE`␣`、方向键`↑ → ↓ ←`、回车`↵`
 
-# UI库的dropdown的键盘访问
+# UI库的 dropdown 的键盘访问
 
 ## select2
 

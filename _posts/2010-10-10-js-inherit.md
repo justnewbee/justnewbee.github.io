@@ -2,7 +2,8 @@
 layout: post
 title: JS 类继承
 date: 2010-10-10 11:10:54
-tags: develop, JavaScript
+categories: frontend
+tags: js
 ---
 
 面试前端开发的时候经常会问及类和继承，一般人都会说点上来：

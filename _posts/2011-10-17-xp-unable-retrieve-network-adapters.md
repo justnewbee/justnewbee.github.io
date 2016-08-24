@@ -2,7 +2,7 @@
 layout: post
 title: XP 下无法获取网络适配器列表
 date: 2011-10-17 09:10:57
-categories: 倒腾
+categories: os
 tags: registry, windows
 ---
 

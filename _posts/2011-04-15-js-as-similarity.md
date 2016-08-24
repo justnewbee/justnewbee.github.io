@@ -2,7 +2,8 @@
 layout: post
 title: JS 和 AS 还真是很有一样的地方
 date: 2011-04-15 11:04:56
-tags:  develop
+categories: frontend
+tags: js, as
 ---
 
 既然做了 NB 的 Flash 开发员，有必要多做一些记录。

@@ -2,7 +2,8 @@
 layout: post
 title: SWFUpload 对大于 4GB 文件显示 0 size 的 bug
 date: 2011-04-28 11:04:29
-tags:  ActionScript
+categories: bug
+tags: as
 ---
 
 今天收到一个 bug，QA 居然用一个 10.3G 的「盗梦空间」来做测试。简直是天才，佩服。

@@ -2,7 +2,8 @@
 layout: post
 title: 复习一下 排序
 date: 2013-03-22 06:03:55
-tags: develop
+categories: develop
+tags: algorithm
 ---
 
 ## 定义

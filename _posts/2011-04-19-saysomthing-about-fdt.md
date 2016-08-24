@@ -1,8 +1,8 @@
 ---
 layout: post
-title: 说一下FDT
+title: 说一下 FDT
 date: 2011-04-19 10:04:29
-tags:  ActionScript, develop
+categories: software
 ---
 
 为了修 SWFUpload 的 bug，所以开始真正的用 [FDT](http://fdt.powerflasher.com/)，以前也用过一下，不过只是为了看 AS 代码方便

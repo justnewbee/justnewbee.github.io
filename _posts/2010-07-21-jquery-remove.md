@@ -2,12 +2,13 @@
 layout: post
 title: jQuery 对象 remove 之后...
 date: 2010-07-21 13:07:38
+categories: software
 tags: develop
 ---
 
 今天碰到一个 bug，在 IE 下才有。
 
-是我的 bubble 插件，HF 的同事帮我找到了症结在哪里，一个节点通过 jQuery 的 remove 方法之后，取它的 parent，IE 下居然是存在的！
+是我的 bubble 插件，HF 的同事帮我找到了症结在哪里，一个节点通过 jQuery 的 `remove()` 方法之后，取它的 `parent`，IE 下居然是存在的！
 
 于是我做了以下实验：
 
@@ -31,7 +32,7 @@ for (var x in fuckP) {
 
 ![](/images/posts/jquery_remove_parent_ff.png)
 
-符合常规思维：parent 是空的 - 因为已经 remove 掉了嘛
+符合常规思维：`parent` 是空的 - 因为已经 `remove` 掉了嘛
 
 ## 1. IE8
 

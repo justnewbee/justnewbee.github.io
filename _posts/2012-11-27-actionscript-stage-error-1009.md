@@ -2,7 +2,8 @@
 layout: post
 title: ActionScript stage 属性 Error #1009
 date: 2012-11-27 09:11:07
-tags: actionscript, flashupload
+categories: frontend
+tags: as, upload
 ---
 
 好久没有更新 FlashUpload 的代码了，没想到一直藏着个问题，而且挺严重。我的 debug 版的 flash player 一加载就弹一个错误框，大致内容是如下：

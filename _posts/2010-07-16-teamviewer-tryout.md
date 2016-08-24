@@ -2,6 +2,7 @@
 layout: post
 title: TeamViewer - 很爽的远程工具
 date: 2010-07-16 05:07:22
+categories: software
 tags: software
 ---
 

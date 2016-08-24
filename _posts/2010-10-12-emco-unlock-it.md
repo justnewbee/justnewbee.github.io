@@ -2,7 +2,7 @@
 layout: post
 title: 极酷的文件解锁工具 - emco Unlock IT
 date: 2010-10-12 02:10:48
-tags: software
+categories: software
 ---
 
 昨天逛 www.download.com 的时候撞见了 [emco Unlock IT](http://www.emco.is/products/unlock-it/features.php) 这个软件，一下子被它的界面给吸引了：

@@ -2,7 +2,7 @@
 layout: post
 title: 纪念太奶奶
 date: 2010-08-28 17:08:32
-tags: life
+categories: life
 ---
 
 虽然早已有心理准备...然而，太奶奶今天的辞世还是让我的心里有些伤感。

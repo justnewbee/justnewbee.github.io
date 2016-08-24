@@ -2,7 +2,8 @@
 layout: post
 title: SWFUpload, FlashFirebug, Flashbug 的 bug
 date: 2011-04-15 10:04:25
-tags: develop
+categories: software
+tags: as
 ---
 
 一直以来只在**用** `SWFUpload` 这个组件，即使有些改动也只是在 JS 层上，但是最近发现了一个十分严重但完全又不严重的 bug。

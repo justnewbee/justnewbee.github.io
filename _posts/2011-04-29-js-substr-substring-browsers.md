@@ -2,7 +2,8 @@
 layout: post
 title: JS 中的小 substr 与大 substring 的区别
 date: 2011-04-29 06:04:26
-tags: JavaScript
+categories: frontend
+tags: js
 ---
 
 碰到一个 bug，说在 IE 下面对文件进行「new version」的操作，即使选择了正确的文件类型，都会报文件类型不符。分析了一会儿，发现问题出在我用了 `substr` 的缘故。

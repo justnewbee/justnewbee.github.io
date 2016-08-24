@@ -2,7 +2,8 @@
 layout: post
 title: nodejs 打印带颜色的 console 信息
 date: 2014-12-17 22:59:31
-categories: nodejs console
+categories: frontend
+tags: nodejs, console
 ---
 
 一个简单的功能，更多情况下，我更喜欢用原生的东西，而不是急着找第三方的支持。

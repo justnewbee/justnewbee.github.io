@@ -2,7 +2,8 @@
 layout: post
 title: IE 下对 select 元素执行 innerHTML 操作的问题
 date: 2014-12-29 20:19:41
-categories: ie html javascript
+categories: frontend
+tags: ie, html, js
 ---
 
 今天被报一个 IE6-8 上的 bug，代码不是我写的，但我是维护者。

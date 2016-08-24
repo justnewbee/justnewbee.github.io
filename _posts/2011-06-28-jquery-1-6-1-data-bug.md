@@ -2,7 +2,8 @@
 layout: post
 title: jQuery 1.6.1 data 方法的 bug
 date: 2011-06-28 17:06:44
-tags: develop, javascript, jquery
+categories: frontend
+tags: jquery
 ---
 
 我有个原则，就是除了代码中变量名之外，轻易不会用骆驼命名。所以，很多字符串常量值我一般会全部小写，中划线或下划线链接。而中划线是我的最爱，因为它不会被用于变量名，可以放心地做全局替换。

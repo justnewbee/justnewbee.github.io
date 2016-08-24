@@ -2,7 +2,8 @@
 layout: post
 title: 修复 SWFUpload destroy 时 IE 下不断报 JS Error 的 bug
 date: 2011-04-19 09:04:58
-tags:  ActionScript, develop, JavaScript, SWFUpload
+categories: bug
+tags:  as, js, upload
 ---
 
 最近遇到了一个棘手的问题，不得不研究一下 SWFUpload 的 AS 代码。

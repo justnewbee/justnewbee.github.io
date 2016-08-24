@@ -2,6 +2,7 @@
 layout: post
 title: Eclipse 显示 GC
 date: 2010-09-09 04:09:03
+categories: software
 tags: eclipse
 ---
 

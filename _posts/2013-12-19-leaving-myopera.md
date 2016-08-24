@@ -2,8 +2,7 @@
 layout: post
 title: 开篇
 date: 2013-12-19 13:55:20
-categories: whatever
-tags: blog
+categories: blog
 ---
 
 今天，收到 MyOpera 的邮件，着实震惊了一下。大致的意思是在众多优秀的 blog 服务围攻下，MyOpera 已经吃不消了，所以需要「瞎宕」整个服务...

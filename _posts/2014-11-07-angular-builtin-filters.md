@@ -1,8 +1,9 @@
 ---
 layout: post
-title: angular 的内建 filter [译]
+title: angular 的内建 filter 「译」
 date: 2014-11-07 22:12:51
-categories: translate angular
+categories: translation
+tags: angular
 ---
 
 译序

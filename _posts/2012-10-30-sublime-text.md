@@ -2,8 +2,8 @@
 layout: post
 title: Sublime Text
 date: 2012-10-30 02:10:56
-categories: 倒腾
-tags: software
+categories: software
+tags: editor
 ---
 
 其实用 [Sublime Text](http://www.sublimetext.com) 也蛮久了，那时候它的图标还是一个小黑块。

@@ -2,8 +2,7 @@
 layout: post
 title: TB 翻译「Maintainable JavaScript」岂是一个屎字了得
 date: 2013-09-03 08:09:48
-categories: something stushit
-tags: book, javascript
+categories: book
 ---
 
 看完了「Maintainable JavaScript」的 TB 翻译本，我实在不能忍了...

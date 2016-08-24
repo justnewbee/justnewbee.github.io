@@ -2,6 +2,7 @@
 layout: post
 title: Mikogo 试用
 date: 2010-08-03 07:08:23
+categories: software
 tags: software
 ---
 

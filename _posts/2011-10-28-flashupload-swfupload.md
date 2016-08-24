@@ -2,7 +2,8 @@
 layout: post
 title: FlashUpload 对于 SWFUpload 的改进
 date: 2011-10-28 08:10:01
-tags: actionscript, swfupload
+categories: frontend
+tags: as, js, upload
 ---
 
 因为 [彻底改写 SWFUpload](/2011/10/28/totaly-modify-swfupload.html)，这里稍作说明和总结。

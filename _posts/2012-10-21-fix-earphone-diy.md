@@ -2,7 +2,7 @@
 layout: post
 title: 修耳机 DIY
 date: 2012-10-21 11:10:44
-categories: 倒腾
+categories: life
 tags: diy
 ---
 

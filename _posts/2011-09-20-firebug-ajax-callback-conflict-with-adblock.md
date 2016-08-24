@@ -2,7 +2,8 @@
 layout: post
 title: firebug 中 ajax 回调方法里的错误无法显示（与 adblock 冲突）
 date: 2011-09-20 05:09:17
-tags: firebug, javascript, jquery
+categories: software
+tags: firebug
 ---
 
 最近想写一个测试 UI 的小工具，里面会用到很多 AJAX 请求。写的过程中发现，界面并没有如预想一样展现，但是又没有任何的错误。然而，换作 Chrome 或者 Safari，却能在 dev tool 里看到有明显的错误。

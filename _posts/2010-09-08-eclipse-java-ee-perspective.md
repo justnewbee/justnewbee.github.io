@@ -2,7 +2,8 @@
 layout: post
 title: Eclipse 在 Java EE Perspective 下文件的排序问题
 date: 2010-09-08 14:09:58
-tags: software
+categories: software
+tags: eclipse
 ---
 
 一直以来都用 Eclipse 的「Java Perspective」，并不是因为喜欢，其实我更喜欢「Java EE Perspective」，它在 `src` 及依赖包的显示上更为简明，唯一的缺陷是它的文件和目录排序有问题，我是一直这么认为的...

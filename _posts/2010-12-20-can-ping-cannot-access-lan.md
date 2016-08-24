@@ -2,6 +2,7 @@
 layout: post
 title: 我恨注册表之 - 局域网能 Ping 但不能访问
 date: 2010-12-20 06:12:02
+categories: os
 tags: registry
 ---
 

@@ -2,7 +2,8 @@
 layout: post
 title: 代码缩进 tab space
 date: 2012-11-26 12:11:39
-tags:  code habit, develop
+categories: frontend
+tags: code-style
 ---
 
 今天又有人跟我讨论缩进风格的统一，这就牵扯到了 tab 与 space 之争

@@ -2,7 +2,8 @@
 layout: post
 title: IE6-9 下 required 属性兼容性问题
 date: 2015-04-15 10:49:51
-categories: html
+categories: frontend
+tags: html, js, browser
 ---
 
 在使用 HTML5 的 `required` 属性时，碰到了 IE6-9 的兼容性问题，这里记录一下。

@@ -2,7 +2,8 @@
 layout: post
 title: IE 下 AS ExternalInterface 对 id 的变态要求
 date: 2011-11-22 07:11:39
-tags: actionscript, flashupload, javascript, swfupload
+categories: bug
+tags: as, js, upload
 ---
 
 `FlashUpload` 改完也好久了，这几天都在着手上层 UI 及业务逻辑的封装。

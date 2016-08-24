@@ -2,7 +2,8 @@
 layout: post
 title: firefox 终于支持 ellipsis
 date: 2011-09-28 14:09:00
-tags:  software
+categories: software
+tags: firefox
 ---
 
 今天升级了 Firefox 到 7，除了感叹一声「升级好快啊」，别无他想，继续写代码。突然发现神奇的三点，firefox 终于支持 `ellipsis` 了。

@@ -2,8 +2,7 @@
 layout: post
 title: xampp apache 的一堆 /xampp/apache
 date: 2012-12-04 13:12:43
-categories: 倒腾
-tags: develop, software
+categories: software
 ---
 
 项目需要，用了一下 apache http server，偷懒搞了个 xampp，心想以后可能还要用它里面的很多东西，放一起也挺好。

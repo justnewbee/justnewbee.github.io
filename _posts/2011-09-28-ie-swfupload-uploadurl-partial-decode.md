@@ -2,10 +2,11 @@
 layout: post
 title: swfupload 上传 url 仅部分 decode
 date: 2011-09-28 11:09:22
-tags: actionscript, ie, software, swfupload
+categories: frontend
+tags: as, ie, upload
 ---
 
-swfupload 的 as 源码已经被我改得面目全非了，我也从原来的免费的 flashdevelop 编译转向了 adobe flashbuilder 的编译。没想到正是这个转变导致了一个 bug。
+swfupload 的 AS 源码已经被我改得面目全非了，我也从原来的免费的 flashdevelop 编译转向了 adobe flashbuilder 的编译。没想到正是这个转变导致了一个 bug。
 
 首先我们的 `uploadUrl` 对于每个文件都是不同的，是由一个固定的前缀加上 `encode` 过的文件名作为 url，比如 _王建春(2).docx_ 的 `uploadUrl` 可能是 `http(s)://server_url/%E7%8E%8B%E5%BB%BA%E6%98%A5%282%29.docx?params...`。
 

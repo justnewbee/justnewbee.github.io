@@ -1,3 +1,11 @@
+---
+layout: post
+title: Angular 十大错误「译」
+date: 2015-01-05 20:19:41
+categories: translation
+tags: angular
+---
+
 https://www.airpair.com/angularjs/posts/top-10-mistakes-angularjs-developers-make
 
 FREE WORKSHOP: Tips for AngularJS DevelopersMark Meyer is giving a free virtual workshop on Angular best practices and how to avoid some common mistakes. >> Sign up to secure a spot

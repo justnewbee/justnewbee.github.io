@@ -2,7 +2,7 @@
 layout: post
 title: 用好 eclipse 的正则替换
 date: 2011-06-27 17:06:30
-tags: develop, eclipse, RegExp
+categories: software
 ---
 
 前端代码很自由，这就导致了多数人代码风格比较乱。我是很看不惯代码太乱的，所以，我拿到一些开源的代码的时候，第一件事情，就是对代码进行风格调整。

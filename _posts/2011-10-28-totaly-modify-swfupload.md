@@ -2,7 +2,8 @@
 layout: post
 title: 彻底重写 SWFUpload
 date: 2011-10-28 05:10:09
-tags: actionscript, swfupload
+categories: frontend
+tags: as, js, upload
 ---
 
 项目的需要，用了开源的 SWFUpload。一开始也只是用用，但是后来发现光是用用还不行，必须改它的源代码，才能适合项目的需求。一开始也就改改 JS，通过 jQuery 减小了不少的代码量。可那还不行，有好几个 bug 还必须改 flash 文件。于是造就了 newbie 且 newbee 的 flash 开发的我。

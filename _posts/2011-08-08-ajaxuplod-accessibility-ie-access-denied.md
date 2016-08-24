@@ -2,8 +2,8 @@
 layout: post
 title: AjaxUpload Accessibility 研究（续） - IE 下 Access Denied
 date: 2011-08-08 05:08:25
-categories: 倒腾
-tags: ajaxupload, javascript
+categories: frontend
+tags: js, upload
 ---
 
 前面对 file input 的页面行为作了研究，基本上能解决键盘操作的问题。还剩下一个 IE（我的是 9 够新了）下的问题。

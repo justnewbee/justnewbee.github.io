@@ -2,7 +2,8 @@
 layout: post
 title: Firefox 插件 - Firebug Autocompleter
 date: 2010-09-19 10:09:30
-tags: software
+categories: software
+tags: firefox
 ---
 
 无意间找到这个插件 [Firebug Autocompleter](https://addons.mozilla.org/en-US/firefox/addon/203494/)，说得完整点：Firefox 的 Firebug 插件的 Autocompleter 插件。

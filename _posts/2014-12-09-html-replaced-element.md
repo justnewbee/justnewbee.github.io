@@ -2,7 +2,8 @@
 layout: post
 title: 什么是 replaced / non-replaced element
 date: 2014-12-09 10:49:51
-categories: html
+categories: frontend
+tags: html
 ---
 
 # line-height 引出的问题

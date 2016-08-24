@@ -1,11 +1,12 @@
 ---
 layout: post
-title: AjaxUpload Accessibilty Bug Fix
+title: AjaxUpload Accessibility Bug Fix
 date: 2011-06-28 04:06:50
-tags: develop, javascript
+categories: frontend
+tags: js
 ---
 
-好吧，基于之前的 [File Input Accessibilty 研究](/2011/06/24/file-input-accessibility.html)，来研究 Accessibility 的 bug 吧。
+好吧，基于之前的 [File Input Accessibility 研究](/2011/06/24/file-input-accessibility.html)，来研究 Accessibility 的 bug 吧。
 
 ## 应用场景
 
@@ -54,7 +55,7 @@ if ($.browser.msie || $.browser.safari) {
     case 32:// SPACE
       if (e.type == "keyup") {
         setTimeout(function() {
-          ui.find("input:file").click();
+          $ui.find("input:file").click();
         }, 0);
       }
       return false;// prevent default, SPACE will scroll down page

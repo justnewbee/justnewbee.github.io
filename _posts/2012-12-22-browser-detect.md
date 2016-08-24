@@ -2,7 +2,8 @@
 layout: post
 title: 浏览器侦测 browser detect
 date: 2012-12-22 09:12:51
-tags: javascript, jquery
+categories: frontend
+tags: js, browser
 ---
 
 最近的项目，很多人写了很多东西，我的任务是重构整理。

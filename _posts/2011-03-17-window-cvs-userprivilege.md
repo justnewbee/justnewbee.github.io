@@ -2,7 +2,8 @@
 layout: post
 title: Window 上简单的 CVS 用户管理（使用系统验证）
 date: 2011-03-17 02:03:39
-tags: develop, software, tech
+categories: software
+tags: cvs
 ---
 
 我工作有两台机器一台是 Win7，专职开发用；另一台老的 XP，专门用来做一些杂七杂八的事情比如收发邮件、听歌等。前段时间在上面把 CVS 服务起起来，成为了一台私用的 CVS 服务器就想自己和组内的人用用其实一直只有自己在用，什么问题都没有。

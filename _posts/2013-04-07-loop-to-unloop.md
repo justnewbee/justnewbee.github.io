@@ -2,7 +2,8 @@
 layout: post
 title: 循环变非循环 - for/while/do_while
 date: 2013-04-07 07:04:27
-tags: develop, javascript
+categories: develop
+tags: algorithm
 ---
 
 ## 背景

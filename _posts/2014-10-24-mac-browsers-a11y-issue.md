@@ -2,7 +2,8 @@
 layout: post
 title: Mac 上浏览器 a11y 陷阱
 date: 2014-10-24 22:12:51
-categories: a11y, mac
+categories: software
+tags: a11y, mac, browser
 ---
 
 # 1 序

@@ -2,7 +2,8 @@
 layout: post
 title: ie9 inline-block 的文字修改后重叠的 bug
 date: 2012-06-21 05:06:34
-tags: ie, javascript
+categories: bug
+tags: ie, js
 ---
 
 最近有个 bug，只在 ie9 下才有，ie678 几个却还是好的。

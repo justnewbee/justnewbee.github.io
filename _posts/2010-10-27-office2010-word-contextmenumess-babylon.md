@@ -2,7 +2,8 @@
 layout: post
 title: Office2010 Word 右键菜单弹出即消失
 date: 2010-10-27 09:10:01
-tags:  software
+categories: software
+tags: ms
 ---
 
 今天写文档的时候，突然间发现 Word 2010 的右键菜单有问题，出来闪一下就消失。之前肯定是好的，至少昨天是好的。
