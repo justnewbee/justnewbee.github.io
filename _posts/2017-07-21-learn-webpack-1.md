@@ -6,6 +6,16 @@ categories: develop
 tags: js, webpack
 ---
 
+这一篇，我们会了解：
+
+* webpack 会把多个 JS 文件打包到一个文件
+* webpack 原生支持 es6/7 的 `import` 和 `export`
+* webpack 的基本构建命令
+* webpack 的输出及说明
+* webpack 构建结果的基本长相
+
+---
+
 先设定一个小目标：`src` 下有多个 JS 文件，入口文件目前只有一个 `index.js` 想拼成一个文件 `dist/index.js`。
 
 # 创建并初始化项目
@@ -202,6 +212,26 @@ index.js  3.08 kB       0  [emitted]  main
 
 构建成功，好的开端!
 
+对输出内容稍作说明：
+
+* `Hash: d260ac6928845823c460` - 此次构建的哈希值，可用于替换在构建脚本中的 `[hash]` 替换符
+* `Version: webpack 3.3.0` - 不解释
+* `Time: 101ms` - 构建过程总耗时
+* `index.js  3.08 kB       0  [emitted]  main`
+    - `index.js` - 构建的目标文件名
+    - `3.08 kB` - 文件体积
+    - `0` - 与之关联的代码片段的 ID
+    - `[emitted]` 创建方式，为输出
+    - `main` 代码片段名称
+* `[0] ./src/index.js 77 bytes {0} [built]`
+    - `[0]` - 当前代码片段的 ID（在构建出的文件中可以找到对应的区块注释类似 `/* 0 */`）
+    - `./src/index.js` - 文件路径
+    - `77 bytes` - 文件体积
+    - `{0}` - 入口代码片段的 ID
+    - `[built]` - 创建方式，为仅构建
+
+到此，webpack 的配置已经好了，用起来也蛮方便，接下来我们来探索一下更多的功能吧。
+
 此时可以去看看构建出来的 _dist/index.js_ 长啥样（为了篇幅，省略了一些）：
 
 ```js
@@ -248,6 +278,10 @@ document.body.appendChild(Object(__WEBPACK_IMPORTED_MODULE_0__component__["a" /*
 * 利用 apache、jetty、tomcat、nginx...这些会稍稍麻烦一些
 * …
 
+用 Firefox、Chrome 或其他「好浏览器」打开 _index.html_，结果当然是没问题的，你可以看到有 **hello webpack** 这样的文案、
+
+# 总结
+
 到此，就 OK… 了？NO No no，其实这里还蛮多问题的：
 
 * 命令太长，且带有文件参数，记不住，也不灵活
@@ -269,5 +303,7 @@ git push
 git tag 0.0.1
 git push origin 0.0.1
 ```
+
+代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.1>
 
 **打完收工**
