@@ -10,12 +10,13 @@ justnewbee.github.io
 # how
 
 1. install jekyll
-	* require ruby > 1.9.3
+	* require ruby > 2.1
 	* require bundler - `gem install bundler`
 
 ## run
 
 ```
+bundle install
 bundle exec jekyll serve
 ```
 
