@@ -113,6 +113,6 @@ git tag 0.0.2
 git push origin 0.0.2
 ```
 
-代码参考：<代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.12>
+代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.12>
 
 **打完收工**
