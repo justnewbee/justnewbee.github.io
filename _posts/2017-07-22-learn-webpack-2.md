@@ -1,12 +1,12 @@
 ---
 layout: post
-title: webpack 学习 1 - 从零开始
+title: webpack 学习 2 - 简单化
 date: 2017-07-22 10:50:00
 categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们会了解：
+这一篇，我们将了解：
 
 * 利用 _npm scripts_ 和 `webpack.config.js` 简化每次命令的敲打
 * 一个最简单的 `webpack.config.js` 用例
@@ -15,11 +15,7 @@ tags: js, webpack
 
 目标，添加配置文件，简化命令调用。毕竟每次输入 `./node_modules/.bin/webpack src/index.js dist/index.js` 这么一长串确实挺扯淡的。
 
-在这之前我们先修改一下 _package.json_ 中的版本号：
-
-```bash
-yarn version --new-version 0.0.2
-```
+在这之前我们先修改一下 _package.json_ 中的版本号：`yarn version --new-version 0.0.2`
 
 # 去参
 

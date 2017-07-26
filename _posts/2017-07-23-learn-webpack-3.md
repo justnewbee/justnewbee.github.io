@@ -1,122 +1,187 @@
 ---
 layout: post
-title: webpack 学习 1 - 从零开始
-date: 2017-07-22 10:50:00
+title: webpack 学习 3 - babel
+date: 2017-07-23 10:50:00
 categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们会了解：
+这一篇，我们将了解：
 
-* 利用 _npm scripts_ 和 `webpack.config.js` 简化每次命令的敲打
-* 一个最简单的 `webpack.config.js` 用例
+* 什么是 _loader_
+* 利用 _babel-loader_ 「编译」ES6/7 的其他特性
+* 利用 _es3ify-loader_ 解决 IE8 不认关键字做属性的问题
 
 ---
 
-目标，添加配置文件，简化命令调用。毕竟每次输入 `./node_modules/.bin/webpack src/index.js dist/index.js` 这么一长串确实挺扯淡的。
+目标，添加相关的配置，安装相关的依赖以编译 ES6/7 的语法。
 
-在这之前我们先修改一下 _package.json_ 中的版本号：
+修改版本号：`yarn version --new-version 0.0.3`。
+
+# 引子
+
+在 [第一篇] 中，我们已经了解到，虽然 webpack 原生支持 `import` 和 `export`，但对于其他的 ES6/7 特性却并没有处理，所以现在构建出来的代码并不能在所有的浏览器里都能玩。
+
+正如 webpack [官方文档](https://webpack.js.org/guides/getting-started/#es2015-modules)中说的：
+
+> Note that webpack will not alter any code other than import and export statements. If you are using other [ES2015 features](http://es6-features.org/), make sure to use a transpiler such as [Babel](https://babeljs.io/) or [Bublé](https://buble.surge.sh/guide/). 
+
+我们就用 babel 吧。
+
+# loader（加载器）
+
+先了解一下 [webpack 的 loader（加载器）][loader] 的概念。
+
+简言之，webpack 视一切为模块，但 JS 毕竟只认识 JS，所以 loader 的作用就是帮 webpack 「认识」这些「外乡人」，并知道如果处理它们。
+
+你可以在这里找到有用的 [loader 列表](https://webpack.js.org/loaders/)，其中之一就是 [babel-loader](https://webpack.js.org/loaders/babel-loader/)，这正是我们需要的。
+
+# 安装 `babel-loader`
+
+安装以下依赖：
 
 ```bash
-yarn version --new-version 0.0.2
+yarn add babel-loader babel-core babel-preset-env --dev
 ```
 
-# 去参
+> 这里除了 `babel-loader` 之外，`babel-core` 和 `babel-preset-env` 也是需要的，否则编译会报错。
+> [babel-core](https://github.com/babel/babel/tree/master/packages/babel-core) 是 babel 的编译核心；
+> [babel-preset-env](https://github.com/babel/babel-preset-env) 能让我们免于写一堆的 presets。
 
-我们先把命令简化一下，不妨去掉里面的参数，因为这些文件路径参数导致的问题就是「不灵活」，这在我看来是个很要命的问题。如果我们直接去掉这些参数，webpack 就迷乱了：
+# 修改配置
 
-```bash
-➜  ./node_modules/.bin/webpack
-No configuration file found and no output filename configured via CLI option.
-A configuration file could be named 'webpack.config.js' in the current directory.
-Use --help to display the CLI options.
-```
-
-webpack 说「请给我一个叫 `webpack.config.js` 的文件」。是的，webpack 默认会找当前项目下有没有这个文件，有的话就会用里面的配置。那么给一个咯：
-
-```bash
-touch webpack.config.js
-```
-
-以下是该文件的内容：
+然后，我们修改一下 `webpack.config.js`，添加如下代码：
 
 ```js
-const path = require("path");
-
-module.exports = {
-  entry: "./src/index.js",
-  output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "index.js"
-  }
-};
-```
-
-这里定义了 [entry](https://webpack.js.org/concepts/entry-points/) 和 [output](https://webpack.js.org/concepts/output/)。前者定义了 webpack 需要进行扫描的起点，后者定义了打包输出的文件。
-
-这个时候再执行无参的命令就没问题了：
-
-```bash
-➜  ./node_modules/.bin/webpack
-Hash: d260ac6928845823c460
-Version: webpack 3.1.0
-Time: 105ms
-   Asset     Size  Chunks             Chunk Names
-index.js  3.07 kB       0  [emitted]  main
-   [0] ./src/index.js 77 bytes {0} [built]
-   [1] ./src/component.js 148 bytes {0} [built]
-```
-
-> webpack 可以通过参数 `--config` 指定不同的配置文件，只不过默认文件是 `webpack.config.js`，即命令 `webpack` 等价于 `webpack --config webpack.config.js`。
-> 
-> 详见 <https://webpack.js.org/configuration/>
-
-# 去掉命令路径前缀
-
-为什么敲命令必须带上 `./node_modules/.bin` 的路径呢？还是麻烦。那么直接打 `webpack` 可不可以呢？答案是「可以，但也不可以」。
-
-如果你全局安装了 webpack，那么这么做可能 OK，但如果你并未全局安装，则就会说命令找不到。但如果我们用 [npm scripts](https://docs.npmjs.com/misc/scripts) 来执行 `webpack` 命令就另当别论了，因为它会系统 `PATH` 下给你加上当前项目的 `./node_modules/.bin`，所以在 _npm script_ 下的命令可以直接写 `webpack`。
-
-> 具体见 [npm run script](https://docs.npmjs.com/cli/run-script) 的文档。
-
-给 `package.json` 添加如下代码片段：
-
-```json
-"scripts": {
-  "build": "webpack"
+module: {
+  rules: [{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+      options: {
+        presets: ["env"]
+      }
+    }
+  }]
 }
 ```
 
-然后执行 `yarn build`：
+> 注意，这里的 `presets` 仅为 _env_。私下认为这并不是一个很好的设计，因为全局搜索代码将无法搜到 `babel-preset-env` 的引用。
 
-```bash
-➜  yarn build
-$ webpack
-Hash: 7b857d818b5f3fb48aca
-Version: webpack 3.1.0
-Time: 150ms
-   Asset     Size  Chunks             Chunk Names
-index.js  3.07 kB       0  [emitted]  main
-   [0] ./src/index.js 77 bytes {0} [built]
-   [1] ./src/component.js 148 bytes {0} [built]
+较一开始的配置，我们多了一个 [module](https://webpack.js.org/configuration/module/)，这是我们为各种类型的文件指定 _loader_ 的地方，_loader_ 会帮助 webpack 把各种文件解释成 webpack 能够理解的 JS module。
+
+> 参考文档 https://webpack.js.org/concepts/#loaders
+
+这里，我们告诉 webpack：「项目下以 `.js` 结尾的文件（忽略 `node_modules` 目录），请用 `babel-loader` 进行处理，`babel-loader` 的配置也给你了，用那个叫做 `env` 的 _preset_。」
+
+# 构建结果
+
+再次运行 `yarn build`，再去看构建出来的代码：
+
+```js
+/******/ (function(modules) {
+/******/ // webpackBootstrap
+/******/ })
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+"use strict";
+
+var _component = __webpack_require__(1);
+var _component2 = _interopRequireDefault(_component);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+document.body.appendChild((0, _component2.default)());
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "hello webpack";
+  var element = document.createElement("div");
+
+  element.innerHTML = text;
+
+  return element;
+};
+/***/ })
+/******/ ]);
 ```
 
-`yarn build` 等同于 `yarn run build`，但如果用 _npm_，则必须为 `npm run build`，命令行输出稍有不同。
+之前留存的 ES6 代码（箭头函数、参数默认值、`const`）都已经被转成所有浏览器都能认识的了。
+
+# IE8
+
+上面的代码中有 `exports.default = ...` 这样的代码，在 IE8 中是会报错的，会说「缺少标识符」。虽然 IE8 比较老，也是我们比较痛恨的浏览器，但可能还是需要解决它。
+
+如果你愿意花时间尝试，对象属性名称为关键字的话，也是没有被加引号的：
+
+```js
+console.log({
+  break: 'break',
+  catch: 'catch',
+  default: 'default'
+});
+```
+
+这些同样在 IE8 下会报错。
+
+我们需要 [es3ify](https://www.npmjs.com/package/es3ify) 来对代码进行转换，对于 webpack 而言，只需要 [es3ify-loader](https://www.npmjs.com/package/es3ify-loader) 就行了。
+
+```bash
+yarn add es3ify-loader --dev
+```
+
+然后修改 _webpack.config.js_ 的 _module_：
+
+```js
+module: {
+  rules: [{
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use: ["es3ify-loader", {
+      loader: "babel-loader",
+      options: {
+        presets: ["env"]
+      }
+    }]
+  }]
+}
+```
+
+> 注意，_es3ify-loader_ 必须放在 _babel-loader_ 前面，否则会报错说「Illegal import declaration」。
+
+这里，你应该已经注意到了 _use_ 的多种写法，它可以支持字符串，对象，已经字符串和对象的混合数组。
+
+执行构建 `yarn build`，然后再看 _dist/index.js_ 就会发现原来的 `.default` 变成了 `["default"]`。
 
 # 总结
 
-解决了第一篇中的第一个问题：命令太长，且带有文件参数，记不住，也不灵活。
+这一节，我们：
 
-同样，打个 tag 先：
+1. 首次接触了 webpack 的 [loader]
+2. 使用了两个 loader 来完成我们的 ES6/7 代码转成 ES5 的任务
+3. 完成了 ES6/7 代码的正确转换，并兼容了 IE8 下关键字不可做属性名的问题
+
+同样，打个 tag：
 
 ```bash
 git add .
-git commit -m 'CHORE use npm scripts and webpack.config.js to ease the keyboard pain'
+git commit -m 'CHORE use babel-loader and fix ie8 keyword issue'
 git push
-git tag 0.0.2
-git push origin 0.0.2
+git tag 0.0.3
+git push origin 0.0.3
 ```
 
-代码参考：<代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.12>
+代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.3>
 
 **打完收工**
+
+[loader]: https://webpack.js.org/concepts/loaders/

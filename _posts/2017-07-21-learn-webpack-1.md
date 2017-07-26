@@ -6,7 +6,7 @@ categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们会了解：
+这一篇，我们将了解：
 
 * webpack 会把多个 JS 文件打包到一个文件
 * webpack 原生支持 es6/7 的 `import` 和 `export`
@@ -236,7 +236,7 @@ index.js  3.08 kB       0  [emitted]  main
 
 ```js
 /******/ (function(modules) {
-/******/ 	// ... webpackBootstrap
+/******/   // ... webpackBootstrap
 /******/ })
 /******/ ([
 /* 0 */
@@ -258,11 +258,12 @@ document.body.appendChild(Object(__WEBPACK_IMPORTED_MODULE_0__component__["a" /*
 /******/ ]);
 ```
 
-你可以看到 `index.js` 和 `component.js` 的内容都在里面，`import` 和 `export` 也被很好的解释，也有默认严格模式。
+对于 webpack 命令行的输出，可以看出以下几点：
 
-同时，你可以看到 `src/index.js` 和 `src/component.js` 前面都带了序号注释，跟输出结果中的序号对应。
-
-但正如前边说的 ES6/7 的其他特性，如 `const`（当然也包括 `let`）、参数默认值、箭头函数等都还是原样，也就是说，目前构建出来的代码只有「好」浏览器才能玩转。
+1. 构建得到的 JS 代码中注释着 `/* 0 */` 和 `/* 1 */` 跟构建日志中的 `[0] ./src/index.js` 和 `[1] ./src/component.js` 是对应的
+2. ES7 的 `import` 和 `export` 语法已经被 webpack 内置支持
+3. 构建出来的代码自动被加上了 `"use strict"`，这是因为 ES6/7 的模块定义默认是严格模式的
+4. 其他的 ES6/7 特性似乎并没有被支持，例如参数默认值、箭头函数、`const` 等都没有被编译，也就是说，目前构建出来的代码只有「好」浏览器才能玩转
 
 # 运行 index.html
 
