@@ -6,19 +6,25 @@ categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们将了解：
+这一篇的目标是——
 
-* webpack 会把多个 JS 文件打包到一个文件
-* webpack 原生支持 es6/7 的 `import` 和 `export`
-* webpack 的基本构建命令
-* webpack 的输出及说明
-* webpack 构建结果的基本长相
+把多个 JS 文件「打包」成一个总的文件。
+
+嗯，就这么简单。
 
 ---
 
-先设定一个小目标：`src` 下有多个 JS 文件，入口文件目前只有一个 `index.js` 想拼成一个文件 `dist/index.js`。
+通过这一篇，我们将了解：
+
+* webpack 会把多个 JS 文件打包到一个文件
+* webpack 原生支持 es6/7 的 `import` 和 `export` 语法，然仅此而已
+* webpack 的基本构建命令
+* webpack 的构建的控制台输出及说明
+* webpack 构建结果的基本长相
 
 # 创建并初始化项目
+
+假设有这么一个项目：`src` 下有多个 JS 文件，入口文件目前只有一个 `index.js`，最终期望拼成一个文件 `dist/index.js`。
 
 创建一个项目，名字叫 `learn-webpack`：
 
@@ -263,7 +269,7 @@ document.body.appendChild(Object(__WEBPACK_IMPORTED_MODULE_0__component__["a" /*
 1. 构建得到的 JS 代码中注释着 `/* 0 */` 和 `/* 1 */` 跟构建日志中的 `[0] ./src/index.js` 和 `[1] ./src/component.js` 是对应的
 2. ES7 的 `import` 和 `export` 语法已经被 webpack 内置支持
 3. 构建出来的代码自动被加上了 `"use strict"`，这是因为 ES6/7 的模块定义默认是严格模式的
-4. 其他的 ES6/7 特性似乎并没有被支持，例如参数默认值、箭头函数、`const` 等都没有被编译，也就是说，目前构建出来的代码只有「好」浏览器才能玩转
+4. 其他的 ES6/7 特性并没有被支持，例如参数默认值、箭头函数、`const` 等都没有被编译，也就是说，目前构建出来的代码只有「好」浏览器才能玩转
 
 # 运行 index.html
 
@@ -282,6 +288,13 @@ document.body.appendChild(Object(__WEBPACK_IMPORTED_MODULE_0__component__["a" /*
 用 Firefox、Chrome 或其他「好浏览器」打开 _index.html_，结果当然是没问题的，你可以看到有 **hello webpack** 这样的文案、
 
 # 总结
+
+这一篇，我们：
+
+1. 了解了如何利用 webpack 命令进行构建打包
+2. 了解了 webpack 构建的控制台输出
+3. 了解了 webpack 构建出来的 JS bundle 的基本长相
+4. 了解了 webpack 已经原生支持 `import` 和 `export`，但仅此而已
 
 到此，就 OK… 了？NO No no，其实这里还蛮多问题的：
 

@@ -6,7 +6,13 @@ categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们将了解：
+这一篇的目标是——
+
+可以用 LESS 来编写 CSS，并为一个 output JS 输出一个对应的 output CSS 文件，同时写的 CSS 可以直接用标准的属性和值，而不用考虑兼容性。
+
+---
+
+通过这一篇，我们将了解：
 
 * 如何叫 webpack 知道怎么处理 CSS
 * 如何将 CSS 输出成文件
@@ -14,8 +20,6 @@ tags: js, webpack
 * 用 PostCSS 处理 CSS 兼容性问题
 
 ---
-
-目标：用 LESS 写 CSS，无需关心兼容性。
 
 修改版本号：`yarn version --new-version 0.0.4`。
 
@@ -102,7 +106,7 @@ error Command failed with exit code 2.
 
 前面说了 webpack 只认识 JS 模块，其他类型的文件需要不同的 loader 来帮助。
 
-于是需要加 [css-loader](https://webpack.js.org/loaders/css-loader/)：
+于是需要加 [css-loader]：
 
 ```bash
 yarn add css-loader --dev
@@ -161,7 +165,7 @@ Done in 2.33s.
 
 ## style-loader - 让 CSS 可以工作
 
-从上面模块 `#2` 的输出看来，只是表明了 webpack 能够解析 CSS 为一个模块，但这个模块并不能够被 HTML 所理解，所以我们还需要一个 [style-loader](https://webpack.js.org/loaders/style-loader/) ，它所做的事情比较简单，就是「Adds CSS to the DOM by injecting a `<style>` tag」。
+从上面模块 `#2` 的输出看来，只是表明了 webpack 能够解析 CSS 为一个模块，但这个模块并不能够被 HTML 所理解，所以我们还需要一个 [style-loader]，它所做的事情比较简单，就是「Adds CSS to the DOM by injecting a `<style>` tag」。
 
 ```bash
 yarn add style-loader --dev
@@ -200,7 +204,7 @@ Done in 2.46s.
 
 虽然样式已经工作了，但是，「样式就该是样式的样儿」——我希望样式可以构建成一个 `index.css` 文件（一个入口 JS 对应一个出口 JS + 一个出口 CSS）。
 
-这次，没有 loader 帮我们了。我们要的是一个叫做  [extract-text-webpack-plugin](https://github.com/webpack-contrib/extract-text-webpack-plugin) 的插件，它用以从 bundle 中抽离文本到独立的文件中。
+这次，没有 loader 帮我们了。我们要的是一个叫做  [extract-text-webpack-plugin] 的插件，它用以从 bundle 中抽离文本到独立的文件中。
 
 ```bash
 yarn add extract-text-webpack-plugin --dev
@@ -312,7 +316,7 @@ You may need an appropriate loader to handle this file type.
 error Command failed with exit code 2.
 ```
 
-又是「You may need an appropriate loader to handle this file type.」。嗯，官网上直接就有 [less-loader](https://webpack.js.org/loaders/less-loader/)。
+又是「You may need an appropriate loader to handle this file type.」。嗯，官网上直接就有 [less-loader]。
 
 ```bash
 yarn add less-loader less --dev
@@ -394,7 +398,7 @@ Done in 2.74s.
 
 你或许可以说「我可以在 mixin 中补全」。嗯，这是一个办法，也是一直以来我用了很久的方式。不过，我们用一种更加工程化、工具化的方式，你会喜欢的。因为，在开发过程中，我们只需要关心标准就行了，兼容性又是什么鬼。
 
-我们需要 [postcss-loader](https://webpack.js.org/loaders/postcss-loader/)：
+我们需要 [postcss-loader]：
 
 > PostCSS 并非「在 CSS 之后干什么什么」的意思，你可以把它看成 CSS 界的 babel。有关 PostCSS，你可以看看
 > [An Introduction to PostCSS](https://www.sitepoint.com/an-introduction-to-postcss/) 和 [Webdesign
@@ -436,7 +440,7 @@ module.exports = {
 
 > 关于 browsers 属性怎么写，参考 [browserslist](https://github.com/ai/browserslist)，autoprefixer 就是用的它。
 
-可以 build 了吗？别急。如果你看了 [An Introduction to PostCSS](https://www.sitepoint.com/an-introduction-to-postcss/) 的话，你就应该知道，PostCSS 其实很轻，而它所能完成的炫酷技能其实是靠它的插件得来的。我们这次的任务是「给我增加浏览器属性前缀」，于是我们需要 `autoprefixer` 这个插件（从 _postcss.config.js_ 也应该知道了）：
+可以 build 了吗？别急。如果你看了 [An Introduction to PostCSS](https://www.sitepoint.com/an-introduction-to-postcss/) 的话，你就应该知道，PostCSS 其实很轻，而它所能完成的炫酷技能其实是靠它的插件得来的。我们这次的任务是「给我增加浏览器属性前缀」，于是我们需要 [autoprefixer] 这个插件（从 _postcss.config.js_ 也应该知道了）：
 
 ```bash
 yarn add autoprefixer --dev
@@ -460,12 +464,12 @@ yarn add autoprefixer --dev
 
 # 总结
 
-这一节，我们了解了：
+这一节，我们：
 
-1. 让 webpack 知道如何处理原生的 CSS 文件（css-loader，style-loader）
-2. 把 CSS 抽取成单个的文件并输出
-3. 使用 CSS 的超集 LESS 来编写 CSS
-4. 使用 PostCSS 来处理一些兼容性问题
+1. 使用 [css-loader]、[style-loader] 让 webpack 知道如何处理原生的 CSS 文件
+2. 使用 [extract-text-webpack-plugin] 把 CSS 抽取成单个的文件并输出
+3. 使用 [less-loader] 使我们得以用 CSS 的超集 LESS 来编写 CSS
+4. 使用 [postcss-loader] 和 [autoprefixer] 来自动、智能地处理掉浏览器兼容性问题
 
 打个 tag 先：
 
@@ -480,3 +484,10 @@ git push origin 0.0.4
 代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.4>
 
 **打完收工**
+
+[css-loader]: https://webpack.js.org/loaders/css-loader/
+[style-loader]: https://webpack.js.org/loaders/style-loader/
+[extract-text-webpack-plugin]: https://github.com/webpack-contrib/extract-text-webpack-plugin
+[less-loader]: https://webpack.js.org/loaders/less-loader/
+[postcss-loader]: https://webpack.js.org/loaders/postcss-loader/
+[autoprefixer]: https://github.com/postcss/autoprefixer

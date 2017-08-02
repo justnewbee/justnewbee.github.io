@@ -6,15 +6,19 @@ categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们将了解：
+这一篇的目标是——
+
+编译 ES6/7 的代码。
+
+---
+
+通过这一篇，我们将了解：
 
 * 什么是 _loader_
 * 利用 _babel-loader_ 「编译」ES6/7 的其他特性
 * 利用 _es3ify-loader_ 解决 IE8 不认关键字做属性的问题
 
 ---
-
-目标，添加相关的配置，安装相关的依赖以编译 ES6/7 的语法。
 
 修改版本号：`yarn version --new-version 0.0.3`。
 
@@ -26,7 +30,7 @@ tags: js, webpack
 
 > Note that webpack will not alter any code other than import and export statements. If you are using other [ES2015 features](http://es6-features.org/), make sure to use a transpiler such as [Babel](https://babeljs.io/) or [Bublé](https://buble.surge.sh/guide/). 
 
-我们就用 babel 吧。
+我们就 Babel 吧。
 
 # loader（加载器）
 
@@ -34,7 +38,7 @@ tags: js, webpack
 
 简言之，webpack 视一切为模块，但 JS 毕竟只认识 JS，所以 loader 的作用就是帮 webpack 「认识」这些「外乡人」，并知道如果处理它们。
 
-你可以在这里找到有用的 [loader 列表](https://webpack.js.org/loaders/)，其中之一就是 [babel-loader](https://webpack.js.org/loaders/babel-loader/)，这正是我们需要的。
+你可以在这里找到有用的 [loader 列表](https://webpack.js.org/loaders/)，其中之一就是 [babel-loader]，这正是我们需要的。
 
 # 安装 `babel-loader`
 
@@ -133,7 +137,7 @@ console.log({
 
 这些同样在 IE8 下会报错。
 
-我们需要 [es3ify](https://www.npmjs.com/package/es3ify) 来对代码进行转换，对于 webpack 而言，只需要 [es3ify-loader](https://www.npmjs.com/package/es3ify-loader) 就行了。
+我们需要 [es3ify](https://www.npmjs.com/package/es3ify) 来对代码进行转换，对于 webpack 而言，只需要 [es3ify-loader] 就行了。
 
 ```bash
 yarn add es3ify-loader --dev
@@ -166,9 +170,9 @@ module: {
 
 这一节，我们：
 
-1. 首次接触了 webpack 的 [loader]
-2. 使用了两个 loader 来完成我们的 ES6/7 代码转成 ES5 的任务
-3. 完成了 ES6/7 代码的正确转换，并兼容了 IE8 下关键字不可做属性名的问题
+1. 首次接触了 webpack 的 [loader] 概念
+2. 使用 [babel-loader] 及它的依赖完成 ES6/7 到 ES5 的编译
+3. 使用 [es3ify-loader]，兼容了 IE8 下关键字不可做属性名的问题
 
 同样，打个 tag：
 
@@ -185,3 +189,5 @@ git push origin 0.0.3
 **打完收工**
 
 [loader]: https://webpack.js.org/concepts/loaders/
+[babel-loader]: https://webpack.js.org/loaders/babel-loader/
+[es3ify-loader]: https://www.npmjs.com/package/es3ify-loader

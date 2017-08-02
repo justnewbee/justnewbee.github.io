@@ -6,18 +6,22 @@ categories: develop
 tags: js, webpack
 ---
 
-这一篇，我们将了解：
+这一篇的目标是——
 
-* 利用 _npm scripts_ 和 `webpack.config.js` 简化每次命令的敲打
+让构建命令简单到基本不用记：`yarn build` 或 `npm run build`，代替一长串的输入。
+
+---
+
+通过这一篇，我们将了解：
+
+* 利用 [npm scripts] 和 `webpack.config.js` 可以简化每次命令的敲打
 * 一个最简单的 `webpack.config.js` 用例
 
 ---
 
-目标，添加配置文件，简化命令调用。毕竟每次输入 `./node_modules/.bin/webpack src/index.js dist/index.js` 这么一长串确实挺扯淡的。
+继续之前先修改一下 _package.json_ 中的版本号：`yarn version --new-version 0.0.2`
 
-在这之前我们先修改一下 _package.json_ 中的版本号：`yarn version --new-version 0.0.2`
-
-# 去参
+# 无参调用命令
 
 我们先把命令简化一下，不妨去掉里面的参数，因为这些文件路径参数导致的问题就是「不灵活」，这在我看来是个很要命的问题。如果我们直接去掉这些参数，webpack 就迷乱了：
 
@@ -48,7 +52,7 @@ module.exports = {
 };
 ```
 
-这里定义了 [entry](https://webpack.js.org/concepts/entry-points/) 和 [output](https://webpack.js.org/concepts/output/)。前者定义了 webpack 需要进行扫描的起点，后者定义了打包输出的文件。
+这里定义了 [entry] 和 [output]。前者定义了 webpack 需要进行扫描的起点，后者定义了打包输出的文件。
 
 这个时候再执行无参的命令就没问题了：
 
@@ -63,7 +67,7 @@ index.js  3.07 kB       0  [emitted]  main
    [1] ./src/component.js 148 bytes {0} [built]
 ```
 
-> webpack 可以通过参数 `--config` 指定不同的配置文件，只不过默认文件是 `webpack.config.js`，即命令 `webpack` 等价于 `webpack --config webpack.config.js`。
+> webpack 可以通过参数 `--config` 指定不同的配置文件，只不过默认文件是项目根目录下的 `webpack.config.js`，即命令 `webpack` 等价于 `webpack --config webpack.config.js`。
 > 
 > 详见 <https://webpack.js.org/configuration/>
 
@@ -71,7 +75,9 @@ index.js  3.07 kB       0  [emitted]  main
 
 为什么敲命令必须带上 `./node_modules/.bin` 的路径呢？还是麻烦。那么直接打 `webpack` 可不可以呢？答案是「可以，但也不可以」。
 
-如果你全局安装了 webpack，那么这么做可能 OK，但如果你并未全局安装，则就会说命令找不到。但如果我们用 [npm scripts](https://docs.npmjs.com/misc/scripts) 来执行 `webpack` 命令就另当别论了，因为它会系统 `PATH` 下给你加上当前项目的 `./node_modules/.bin`，所以在 _npm script_ 下的命令可以直接写 `webpack`。
+如果你全局安装了 webpack，那么这么做**可能 OK**（webpack 的版本号不同，配置也会有所差别，所以是「可能」）；但如果你并未全局安装，则就会说命令找不到。
+
+但如果我们用 [npm scripts] 来执行 `webpack` 命令就另当别论了，因为它会系统 `PATH` 下给你加上当前项目的 `./node_modules/.bin`，所以在 _npm script_ 下的命令可以直接写 `webpack`。
 
 > 具体见 [npm run script](https://docs.npmjs.com/cli/run-script) 的文档。
 
@@ -101,6 +107,11 @@ index.js  3.07 kB       0  [emitted]  main
 
 # 总结
 
+这一篇，我们：
+
+1. 了解了可以用 [npm scripts] 的形式把构建命令写在 `package.json` 中
+2. 了解执行 webpack 命令的时候，如果不指定参数则必须要由 _webpack.config.js_（默认，你也可以指定具体的文件）来配置 [entry] 和 [output]
+
 解决了第一篇中的第一个问题：命令太长，且带有文件参数，记不住，也不灵活。
 
 同样，打个 tag 先：
@@ -116,3 +127,7 @@ git push origin 0.0.2
 代码参考：<https://github.com/justnewbee/learn-webpack/tree/0.0.12>
 
 **打完收工**
+
+[npm scripts]: https://docs.npmjs.com/misc/scripts
+[entry]: https://webpack.js.org/concepts/entry-points/
+[output]: https://webpack.js.org/concepts/output/
