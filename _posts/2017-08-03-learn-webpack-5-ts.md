@@ -227,7 +227,7 @@ echo {} > tsconfig.json
 
 > 觉得各种配置文件越来越多了啊！如果能全部写在 _webpack.config.js_ 中就好了。
 
-```json
+```bash
 ts-loader: Using typescript@2.4.2 and /Users/jianchunwang/Workspaces/github-me/learn-webpack/tsconfig.json
 Hash: f07a5d689ef3756100cf
 Version: webpack 3.3.0
